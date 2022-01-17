@@ -188,17 +188,22 @@ section img {
 body > footer {
     padding: 20px;
     text-align: center;
-    background: #caff70;
+    color: white;
+    background: #333;
 }
 
 body footer a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 body footer span{
     font-size: 20px;
-    margin: 1%;
 }
+
+footer section p, footer section a {
+    display: inline-block;
+}
+
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (min-width: 768px){
     main, aside{
@@ -237,7 +242,7 @@ body footer span{
         display: inline-block;
     }
     .social, .pagamenti{
-        width: 10%;
+        width: 15%;
     }
     .contatti{
         width: 60%;
