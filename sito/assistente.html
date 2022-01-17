@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Icone -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css" >
+    <link rel="stylesheet" href="../css/styleClass.css" >
+    <script type="text/javascript" src="../js/functions.js"></script>
+    <title>UniPeppers - Home</title>
+</head>
+<body>
+    <header>
+        <img src="../upload/logo.png" alt="logo"/>
+    </header>
+      
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="ricette.html">Ricette</a>
+        <a href="varieta.html">Variet&agrave;</a>
+        <a href="assistente.html" class="active">Assistente</a>
+        <a href="preferiti.html" class="right"><span class="fas fa-heart" alt="Preferiti"></span></a>
+        <a href="carrello.html" class="right"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
+        <a href="login.html" class="right"><span class="fas fa-user-alt" alt="Utente"></span></a>
+    </nav>
+
+    <main>
+        <h1><span class="fas fa-robot" ></span> Assistente</h1>    
+
+        <section class="assistente">
+                <p>Rispondi alle seguenti domande e noi troveremo il peperoncino giusto per le tue esigenze!</p>
+        </section>
+
+        <!-- Algoritmo findPepper-->
+        <!--<?php $domanda = $templateParams["domanda"][0]; ?> -->
+        <!--<script >let numD="<?php echo $domanda["IdDomanda"];?>"; </script>
+            <div class="row text-center my-4">
+                <h5><?php echo $domanda["Domanda"]?></h5>
+            </div>
+        -->
+
+        <section class="assistente">
+            <button type="button" class="btnAssistente">risposta 1</button>   
+            <button type="button" class="btnAssistente">risposta 2</button>
+            <button type="button" class="btnAssistente">Inizia di nuovo</button>
+        </section>
+ 
+        <section class="assResult">
+            <div>
+            <img src="../upload/variety/CarolinaReaper.jpg" alt="peperoncino"/>
+            </div>
+            <div>
+            <h3>Nome Peperoncino</h3>
+                <p>descrizione varieta<span id="dots">...</span><span id="more">prvo a capire perche non vada piu</span></p>
+                        <!-- Redirect alla pagina da fare-->
+                <button onclick="ReadMore()" id="ReadMoreBtn">Ulteriori Info</button>
+            </div>
+        </section>  
+    </main>
+
+    <aside>
+        <h3>Potrebbe interessarti:</h3>
+		<section>
+			<img src="../upload/recipes/bloodyMary.jpg" alt="Ricetta">
+            <br>
+			<a href="#"><h4>Nome Ricetta</h4></a>
+			<p><span class="fas fa-clock"></span> 20min  <span class="fas fa-euro-sign"></span> costo</p>				
+		</section>
+		<section>
+			<img src="../upload/peperonciniVar.jpg" alt="Varietà">
+            <br>
+			<a href="#"><h4>Scopri tutte le variet&agrave;!</h4></a>
+		</section>
+    </aside>      
+    <footer>
+        <section class="social">
+            <p>Trovaci su:</p>
+            <a href="http://www.facebook.com"><span class="fab fa-facebook-f" alt="Facebook" style="color: #4267B2;"></span></a>
+            <a href="http://instagram.com"><span class="fab fa-instagram" alt="Instagram" style="color: orange;"></span></a>
+            <a href="http://twitter.com"><span class="fab fa-twitter" alt="Twitter" style="color: #1DA1F2;"></span></a>
+        </section>
+        <section class="contatti">
+            <p>©2021 Uni-Pepper Tutti i Diritti Riservati</p>
+            <a href="privacy.html">Politica sulla Privacy & Cookie</a>
+            <a href="termini.html">Termini e Condizioni</a>
+        </section>
+        <section class="pagamenti">
+            <p>Pagamenti con:</p>
+            <a href="http://americanexpress.com"><span class="fab fa-cc-amex" alt="American Express" style="color: rgb(4, 4, 199);"></span></a>
+            <a href="http://visa.com"><span class="fab fa-cc-visa" alt="Visa" style="color: navy;"></span></a>
+            <a href="http://mastercard.com"><span class="fab fa-cc-mastercard" alt="Mastercard" style="color: red;"></span></a>
+        </section>
+    </footer>
+</body>
+
+
+

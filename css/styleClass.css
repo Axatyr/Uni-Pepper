@@ -1,0 +1,44 @@
+.assistente {
+    display: flex;
+    justify-content: center;
+    background-color: initial;
+    align-items: center;
+}
+
+#more {display: none;}
+
+.btnAssistente {
+    margin: 1%;
+    padding: 1% 2%;
+    font-size: 150%;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: #caff70;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+  
+.btnAssistente:hover {background-color: #7aaa26}
+  
+.btnAssistente:active {
+    background-color: #7aaa26;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.assResult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 25%;
+}
+
+.assResult div{
+    margin-inline: 5%;
+    display: inline-block;
+    align-items: center;
+}
+ 
