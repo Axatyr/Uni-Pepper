@@ -574,7 +574,6 @@ hr {
     .product{
         margin: 2%;
     }
-<<<<<<< HEAD
     .stato div{
         display: inline-block;
         margin: 4%;
@@ -608,7 +607,6 @@ hr {
     }
     .procedimento{
         max-width: 77%;
-=======
 
     .sec-varieta div{
         display: inline-block;
@@ -626,6 +624,5 @@ hr {
 
     .varieta div:nth-child(2) {
         width: 60%;
->>>>>>> 0f47f4968f49b50e8c2ab5a3e26a3935b18f938a
     }
 }
