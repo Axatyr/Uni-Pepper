@@ -41,4 +41,18 @@
     display: inline-block;
     align-items: center;
 }
+
+#readMoreBtn {
+    margin: 1%;
+    padding: 1% 2%;
+    font-size: 100%;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: #caff70;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px #999;
+}
  
