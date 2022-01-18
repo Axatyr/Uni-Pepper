@@ -26,17 +26,39 @@
     </nav>
     <main>
         <h1><span class="fas fa-shopping-cart"></span> Carrello</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th id="articolo">Articolo</th></th><th id="prezzo">Prezzo</th><th id="quantita">Quantit&agrave;</th><th id="totale">Totale</th><th id="button"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td headers="articolo">
+        <div class="table-div">
+          <div>
+            <table>
+              <thead>
+                  <tr>
+                    <th id="img"></th><th id="articolo">Articolo</th></th><th id="prezzo">Prezzo</th><th id="quantita">Quantit&agrave;</th><th id="button"></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td headers="img">
                         <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                      </td>
+                      <td headers="articolo">
                         <a href="#">Nome Prodotto</a>
+                      </td>
+                      <td headers="prezzo">
+                          <p>10,50€</p>
+                      </td>
+                      <td headers="quantita">
+                          <input type="number" id="quantita" name="quantita" min="1" value="1"/>
+                      </td>
+                      <td headers="button">
+                        <button type="button"><span class="fas fa-heart"></span></button>
+                        <button type="button"><span class="fas fa-trash"></span></button>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td headers="img">
+                      <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                    </td>
+                    <td headers="articolo">
+                      <a href="#">Nome Prodotto</a>
                     </td>
                     <td headers="prezzo">
                         <p>10,50€</p>
@@ -44,79 +66,65 @@
                     <td headers="quantita">
                         <input type="number" id="quantita" name="quantita" min="1" value="1"/>
                     </td>
-                    <td headers="totale">
-                        <p>10,50€</p>    
+                    <td headers="button">
+                      <button type="button"><span class="fas fa-heart"></span></button>
+                      <button type="button"><span class="fas fa-trash"></span></button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td headers="img">
+                      <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                    </td>
+                    <td headers="articolo">
+                      <a href="#">Nome Prodotto</a>
+                    </td>
+                    <td headers="prezzo">
+                        <p>10,50€</p>
+                    </td>
+                    <td headers="quantita">
+                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
                     </td>
                     <td headers="button">
                       <button type="button"><span class="fas fa-heart"></span></button>
                       <button type="button"><span class="fas fa-trash"></span></button>
                     </td>
-                </tr>
-                <tr>
-                  <td headers="articolo">
+                  </tr>
+                  <tr>
+                    <td headers="img">
                       <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                    </td>
+                    <td headers="articolo">
                       <a href="#">Nome Prodotto</a>
-                  </td>
-                  <td headers="prezzo">
-                      <p>10,50€</p>
-                  </td>
-                  <td headers="quantita">
-                      <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-                  </td>
-                  <td headers="totale">
-                      <p>10,50€</p>    
-                  </td>
-                  <td headers="button">
-                    <button type="button"><span class="fas fa-heart"></span></button>
-                    <button type="button"><span class="fas fa-trash"></span></button>
-                  </td>
-              </tr>
-              <tr>
-                <td headers="articolo">
-                    <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
-                    <a href="#">Nome Prodotto</a>
-                </td>
-                <td headers="prezzo">
-                    <p>10,50€</p>
-                </td>
-                <td headers="quantita">
-                    <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-                </td>
-                <td headers="totale">
-                    <p>10,50€</p>    
-                </td>
-                <td headers="button">
-                  <button type="button"><span class="fas fa-heart"></span></button>
-                  <button type="button"><span class="fas fa-trash"></span></button>
-                </td>
-            </tr>
-            <tr>
-              <td headers="articolo">
-                  <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
-                  <a href="#">Nome Prodotto</a>
-              </td>
-              <td headers="prezzo">
-                  <p>10,50€</p>
-              </td>
-              <td headers="quantita">
-                  <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-              </td>
-              <td headers="totale">
-                  <p>10,50€</p>    
-              </td>
-              <td headers="button">
-                <button type="button"><span class="fas fa-heart"></span></button>
-                <button type="button"><span class="fas fa-trash"></span></button>
-              </td>
-          </tr>
-            </tbody>
-        </table>
+                    </td>
+                    <td headers="prezzo">
+                        <p>10,50€</p>
+                    </td>
+                    <td headers="quantita">
+                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
+                    </td>
+                    <td headers="button">
+                      <button type="button"><span class="fas fa-heart"></span></button>
+                      <button type="button"><span class="fas fa-trash"></span></button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+            <div class="container">
+              <h4>Riepilogo ordine <span class="prezzo" style="color:black"><span class="fa fa-shopping-cart"></span> <b>4</b></span></h4>
+              <p><a href="#">Prodotto 1</a> <span class="prezzo">$15</span></p>
+              <p><a href="#">Prodotto 2</a> <span class="prezzo">$5</span></p>
+              <p><a href="#">Prodotto 3</a> <span class="prezzo">$8</span></p>
+              <p><a href="#">Prodotto 4</a> <span class="prezzo">$2</span></p>
+              <hr>
+              <p>Totale <span class="prezzo" style="color:black"><b>$30</b></span></p>
+            </div>
+        </div>
         <!--Riepilogo-->
         <div class="row">
             <div class="col-75">
               <div class="container">
                 <form action="#">
-                
                   <div class="row">
                     <div class="col-50">
                       <h3>Indirizzo di fatturazione: </h3>
@@ -134,7 +142,7 @@
                     </div>
           
                     <div class="col-50">
-                      <h3>Pagamento</h3>
+                      <h3>Metodo di Pagamento</h3>
                       <label for="fname">Carte valide</label>
                       <div class="icon-container">
                         <span class="fab fa-cc-visa" style="color:navy;"></span>
@@ -164,17 +172,7 @@
                 </form>
               </div>
             </div>
-            <div class="col-25">
-              <div class="container">
-                <h4>Carrello <span class="prezzo" style="color:black"><span class="fa fa-shopping-cart"></span> <b>4</b></span></h4>
-                <p><a href="#">Prodotto 1</a> <span class="prezzo">$15</span></p>
-                <p><a href="#">Prodotto 2</a> <span class="prezzo">$5</span></p>
-                <p><a href="#">Prodotto 3</a> <span class="prezzo">$8</span></p>
-                <p><a href="#">Prodotto 4</a> <span class="prezzo">$2</span></p>
-                <hr>
-                <p>Totale <span class="prezzo" style="color:black"><b>$30</b></span></p>
-              </div>
-            </div>
+            
           </div>
     </main>
     <aside>
