@@ -66,11 +66,21 @@ main {
     margin: 2%;
 }
 main section{
+    /*
     display: inline-block;
     background-color: #D6D4D8;
     border-radius: 8px;
     margin: 2%;
     text-align: center;
+    */
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 98%;
+    margin: 2%;
+    padding: 2%;
+    text-align: left;
+    display: inline-block;
 }
 main section img{
     max-width: 200px;
@@ -92,6 +102,16 @@ main section footer button{
     border-width: 1px;
     font-size: medium;
 }
+
+main section div{
+    display: inline-block;
+    text-align: center;
+    margin: 2%;
+}
+main section div span{
+    font-size: 200%;
+}
+
 main section li{
     list-style: none;
 }
@@ -113,7 +133,7 @@ main form button {
     width: 100%;
 }
   
-main form button:hover {
+main form button:hover, .reg-button:hover {
     opacity: 0.8;
 }
   
@@ -128,32 +148,8 @@ main form p span{
     background: #fff;
     padding: 0 10px;
 }
-.ricetta {
-    position: relative;
-    max-width: 100%;
-    margin: 10px 1%;
-    padding: 0;
-}
-  
-.ricetta img {
-    vertical-align: middle;
-    max-width: 100%;
-    padding: 0;
-}
-  
-.ricetta .content {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3); /* Black background with 0.5 opacity */
-    color: #f1f1f1;
-    line-height: 300%;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-}
-.ricetta .content a{
-    color: #f1f1f1;
-}
+
+/* Aside*/
 aside {
     background-color: #f1f1f1;
     padding: 10px;
@@ -178,10 +174,6 @@ aside section a{
 aside section{
     background-color: #D6D4D8;
     margin: 2% 0;
-}
-/* Fake image, just for this example */
-section img {
-    padding: 20px;
 }
   
 /* Footer */
@@ -223,9 +215,7 @@ footer section p, footer section a {
     main section {
         display: inline-block;
     }
-    .ricetta {
-        max-width: 45%;
-    }
+
     nav a {
         display: inline-block;
         width: auto;
@@ -240,12 +230,5 @@ footer section p, footer section a {
     }
     body footer section{
         display: inline-block;
-    }
-    .social, .pagamenti{
-        width: 15%;
-    }
-    .contatti{
-        width: 60%;
-    }
-      
+    }    
 }

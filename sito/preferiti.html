@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css" >
+    <link rel="stylesheet" href="../css/styleClass.css" >
     <title>UniPeppers - Preferiti</title>
 </head>
 <body>
@@ -26,65 +27,69 @@
     <main>
         <h1><span class="fas fa-heart"></span> Preferiti</h1>
         <!-- Prodotti -->
-        <section>
+        <div class="product">
             <img src="../upload/variety/BhutLah.jpg" alt="Immagine prodotto"/>
-            <br>
-            <a href="prodotto.html">Nome Prodotto</a>
-            <p>Prezzo: 10.00</p>                  
-            <footer class="text-end">
-                <button type="button" class="btn btn-light"><span class="fas fa-trash"></span></button>
-            </footer>
-        </section>
-        <section>
-            <img src="../upload/variety/HabaneroRedSavina.jpg" alt="Immagine prodotto"/>
-            <br>
-            <a href="prodotto.html">Nome Prodotto</a>
-            <p>Prezzo: 10.00</p>                  
-            <footer class="text-end">
-                <button type="button" class="btn btn-light"><span class="fas fa-trash"></span></button>
-            </footer>
-        </section>
-        <section>
+            <h3><a href="prodotto.html">Nome Prodotto</a></h3>
+            <p class="price">19.99€</p>
+            <p>Some text about the jeans..</p>
+            <p><button type="button"><span class="fas fa-cart-plus"></span></button>
+                <button type="button"><span class="fas fa-trash"></span></button>
+            </p>
+        </div>
+        <div class="product">
             <img src="../upload/variety/Cayenne.jpg" alt="Immagine prodotto"/>
-            <br>
-            <a href="prodotto.html">Nome Prodotto</a>
-            <p>Prezzo: 10.00</p>                  
-            <footer class="text-end">
-                <button type="button" class="btn btn-light"><span class="fas fa-trash"></span></button>
-            </footer>
-        </section>
-        <section>
-            <img src="../upload/variety/TomatoPepper.jpg" alt="Immagine prodotto"/>
-            <br>
-            <a href="prodotto.html">Nome Prodotto</a>
-            <p>Prezzo: 10.00</p>                  
-            <footer class="text-end">
-                <button type="button" class="btn btn-light"><span class="fas fa-trash"></span></button>
-            </footer>
-        </section>
-        <section>
-            <img src="../upload/variety/RocotoRed.jpeg" alt="Immagine prodotto"/>
-            <br>
-            <a href="prodotto.html">Nome Prodotto</a>
-            <p>Prezzo: 10.00</p>                  
-            <footer class="text-end">
-                <button type="button" class="btn btn-light"><span class="fas fa-trash"></span></button>
-            </footer>
-        </section>
+            <h3><a href="prodotto.html">Nome Prodotto</a></h3>
+            <p class="price">19.99€</p>
+            <p>Some text about the jeans..</p>
+            <p><button type="button"><span class="fas fa-cart-plus"></span></button>
+                <button type="button"><span class="fas fa-trash"></span></button>
+            </p>
+        </div>
+        <div class="product">
+            <img src="../upload/variety//BhutLah.jpg" alt="Immagine prodotto"/>
+            <h3><a href="prodotto.html">Nome Prodotto</a></h3>
+            <p class="price">19.99€</p>
+            <p>Some text about the jeans..</p>
+            <p><button type="button"><span class="fas fa-cart-plus"></span></button>
+                <button type="button"><span class="fas fa-trash"></span></button>
+            </p>
+        </div>
+        <div class="product">
+            <img src="../upload/variety/PeperoncinoCiliegia.jpg" alt="Immagine prodotto"/>
+            <h3><a href="prodotto.html">Nome Prodotto</a></h3>
+            <p class="price">19.99€</p>
+            <p>Some text about the jeans..</p>
+            <p><button type="button"><span class="fas fa-cart-plus"></span></button>
+                <button type="button"><span class="fas fa-trash"></span></button>
+            </p>
+        </div>
+        <div class="product">
+            <img src="../upload/variety/HabaneroRedSavina.jpg" alt="Immagine prodotto"/>
+            <h3><a href="prodotto.html">Nome Prodotto</a></h3>
+            <p class="price">19.99€</p>
+            <p>Some text about the jeans..</p>
+            <p><button type="button"><span class="fas fa-cart-plus"></span></button>
+                <button type="button"><span class="fas fa-trash"></span></button>
+            </p>
+        </div>
     </main>
     <aside>
         <h3>Potrebbe interessarti:</h3>
-		<section>
-			<img src="../upload/recipes/bloodyMary.jpg" alt="Ricetta">
-            <br>
-			<a href="#"><h4>Nome Ricetta</h4></a>
-			<p><span class="fas fa-clock"></span> 20min  <span class="fas fa-euro-sign"></span> costo</p>				
-		</section>
-		<section>
-			<img src="../upload/peperonciniVar.jpg" alt="Varietà">
-            <br>
-			<a href="#"><h4>Scopri tutte le variet&agrave;!</h4></a>
-		</section>
+        <div class="aside">
+            <img src="../upload/recipes/penne-arrabbiata.jpg" alt="Ricetta">
+            <div class="overlay">
+                <a href="ricetta.html"><h4>Nome Ricetta</h4></a>
+                <span class="fas fa-concierge-bell">difficoltà</span>
+                <span class="fas fa-clock">tempo</span>
+                <span class="fas fa-euro-sign">costo</span>
+            </div>
+        </div>
+        <div class="aside">
+            <img src="../upload/peperonciniVar.jpg" alt="Varietà">
+            <div class="overlay">
+                <a href="ricetta.html"><h4>Scopri tutte le variet&agrave;!</h4></a>
+            </div>
+        </div>
     </aside>      
     <footer>
         <section class="social">
