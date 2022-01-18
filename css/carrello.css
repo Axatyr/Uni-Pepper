@@ -1,3 +1,17 @@
+.table-div div{
+    display: inline-block;
+    justify-content: center;
+    vertical-align: top;
+}
+
+.table-div div:first-child {
+    width: 75%;
+}
+
+.table-div > .container {
+    width: 23%;
+}
+
 table{
     width: 100%;
     border-spacing: 0;   /*tolgo lo spazio tra i bordi delle celle*/
@@ -7,25 +21,22 @@ table{
     margin-bottom: 5%;
     border: 1px solid lightgrey;
     border-radius: 3px;
+    
 }
+
 table img{
     max-width: 100px;
     float: left;
-    margin: 2%;
 }
+
 table th{
     padding: 10px;
 }
+
 table td{
     border-top: 1px solid gray;
     padding: 10px;
-    width: auto;
-}
-
-table td a {
-    line-height: 75px;
-    margin-left: 8px;
-    float: left;
+    width: 20%;
 }
 
 table button{
@@ -37,7 +48,7 @@ table button{
     float: right;
 }
 table input{
-    max-width: 20%;
+    max-width: 50px;
     padding: 6px;
     border-radius: 8px;
 }
@@ -49,12 +60,7 @@ table input{
     flex-wrap: wrap;
     margin: 0 -16px;
 }
-  
-.col-25 {
-    -ms-flex: 25%; /* IE10 */
-    flex: 25%;
-}
-  
+
 .col-50 {
     -ms-flex: 50%; /* IE10 */
     flex: 50%;
@@ -65,7 +71,7 @@ table input{
     flex: 75%;
 }
   
-.col-25, .col-50, .col-75 {
+.col-50, .col-75 {
     padding: 0 16px;
 }
   
@@ -130,7 +136,14 @@ label {
     .row {
       flex-direction: column-reverse;
     }
-    .col-25 {
-      margin-bottom: 20px;
+
+    .table-div div:first-child{
+        width: 100%;
     }
+
+    .table-div > .container {
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
   }
