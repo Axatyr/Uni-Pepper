@@ -85,13 +85,18 @@ main section{
 main section img{
     max-width: 200px;
 }
+
+
 main section a{
     text-decoration: none;
     color: black;
 }
+/*
 main section h4{
     margin: 0;
 }
+*/
+
 main section footer{
     align-items: center;
     padding: 2%;
@@ -104,10 +109,11 @@ main section footer button{
 }
 
 main section div{
-    display: inline-block;
+    /*display: inline-block;*/
     text-align: center;
-    margin: 2%;
+    /*margin: 2%;*/
 }
+
 main section div span{
     font-size: 200%;
 }
