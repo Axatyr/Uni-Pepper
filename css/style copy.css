@@ -1,0 +1,190 @@
+* {
+    box-sizing: border-box;
+}
+  
+/* Style the body */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+  
+/* Header/logo Title */
+header {
+    padding: 50px;
+    text-align: center;
+    background: #caff70;
+    color: black;
+}
+header img{
+    height: 50px;
+}
+  
+ /* Increase the font size of the heading */
+header h1 {
+    font-size: 40px;
+}
+  
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+nav {
+    overflow: hidden;
+    background-color: #333;
+}
+  
+/* Style the navigation bar links */
+nav a:not(.right) {
+    width: auto;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+nav a.right {
+    float: right;
+    display: inline-flex;
+    width: auto;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+  
+/* Change color on hover */
+nav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+  
+/* Active/current link */
+nav a.active {
+    background-color: #666;
+    color: white;
+}
+main {
+    background-color: white;
+    padding: 10px;
+    margin: 2%;
+}
+main section{
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 98%;
+    margin: 2%;
+    padding: 2%;
+    text-align: left;
+    display: inline-block;
+}
+main section div{
+    display: inline-block;
+    text-align: center;
+    margin: 2%;
+}
+main section div span{
+    font-size: 200%;
+}
+main section > ul > li{
+    list-style: none;
+}
+main form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+main form button, .reg-button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+  
+main form button:hover, .reg-button:hover {
+    opacity: 0.8;
+}
+
+/*aside*/
+aside {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 2%;
+    text-align: center;
+}
+aside h3{
+    background-color: #caff70;
+    padding: 6% 2%;
+    margin: 0;
+}
+aside section{
+    padding-bottom: 15px;
+}
+aside section img{
+    max-width: 250px;
+}
+aside section a{
+    text-decoration: none;
+    color: black;
+}
+aside section{
+    background-color: #D6D4D8;
+    margin: 2% 0;
+}
+section img {
+    padding: 20px;
+}
+  
+/* Footer */
+body > footer {
+    padding: 20px;
+    text-align: center;
+    background: #caff70;
+}
+
+body footer a{
+    text-decoration: none;
+    color: black;
+}
+body footer span{
+    font-size: 20px;
+    margin: 1%;
+}
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (min-width: 768px){
+    main, aside{
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Create two unequal columns that sits next to each other */
+    /* Sidebar/left column */
+    aside {
+        width: 21%;
+    }
+  
+    /* Main column */
+    main {
+        width: 70%;
+    }
+    main section {
+        display: inline-block;
+    }
+    nav a {
+        display: inline-block;
+        width: auto;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+    }
+    /* Right-aligned link */
+    nav a.right {
+        float: right;
+    }
+    body footer section{
+        display: inline-block;
+    }
+}

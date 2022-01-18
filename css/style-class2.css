@@ -1,0 +1,360 @@
+main .login p, .rifornisci{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+main .login p span, .product p span{
+    background: #fff;
+    padding: 0 10px;
+}
+.ricetta {
+    position: relative;
+    max-width: 100%;
+    margin: 10px 1%;
+    padding: 0;
+}
+
+.container{
+    padding: 16px;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+  
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+  
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+   
+  /* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #f1f1f1;
+}
+  
+.ricetta img {
+    vertical-align: middle;
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Gestione immagini con overlay area utente*/
+.card {
+    position: relative;
+    padding: 0;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 300px;
+}
+  
+/* Immagine Responsive */
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+  
+/* Effetto overlay */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    transition: .5s ease;
+    opacity:0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+/*Gestione link*/
+.card a, .aside a{
+    color: white;
+    text-decoration: none;
+}
+.card:hover .overlay, .aside:hover .overlay {
+    opacity: 1;
+}
+
+/*Gestione pagina ricette*/  
+.ricetta .content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    line-height: 300%;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.ricetta .content a{
+    color: #f1f1f1;
+}
+/*Prodotti*/
+.product {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 49%;
+    margin: 2% auto;
+    text-align: center;
+    display: inline-block;
+}
+
+.product img{
+    max-width: 200px;
+    margin-top: 2%;
+}
+
+.product a{
+    text-decoration: none;
+    color: black;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.product input{
+    max-width: 40%;
+    padding: 6px;
+    margin-bottom: 5%;
+    border-radius: 8px;
+}
+  
+.product button {
+    border: none;
+    display: inline-block;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 45%;
+    font-size: 18px;
+    margin-bottom: 2%;
+}
+  
+.product button:hover {
+    opacity: 0.7;
+}
+
+.add-button{
+    background-color: lightgrey;
+    color: black;
+    padding: 14px 20px;
+    margin: 10% 0 0;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+/*Info prodotto*/
+.info{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 98%;
+    margin: 2%;
+    padding: 2%;
+    text-align: center;
+}
+
+.info p{
+    margin: 0 2% 0 0;
+}
+
+.info img{
+    max-width: 300px;
+    float: none;
+    margin-right: 5%;
+}
+
+.info input{
+    max-width: 10%;
+    padding: 6px;
+    border-radius: 8px;
+    margin-bottom: 2%;
+}
+
+.info button{
+    border: none;
+    border-radius: 5px;
+    display: inline-block;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 15%;
+    font-size: 18px;
+    margin-bottom: 2%;
+    margin-top: 0;
+}
+
+/*Ordini*/
+.order {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 98%;
+    margin: 2%;
+    text-align: left;
+    display: inline-block;
+}
+.order1{
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    width: 98%;
+    margin: 2%;
+    text-align: left;
+    display: inline-block;
+}
+.order div, .order1 div{
+    float: left;
+    margin: 5%;
+    font-size: 500%;
+}
+.order button, .order1 button {
+    border: none;
+    float: right;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+.order button:hover, .order1 button:hover{
+    opacity: 0.7;
+}
+/*aside*/
+.aside img{
+    max-width: 100%;
+}
+
+.aside {
+    position: relative;
+    padding: 0;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+}
+  
+/* Effetto overlay */
+.aside .overlay {
+    position: absolute;
+    bottom: 1.5%;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5); /* Black see-through */
+    color: #f1f1f1;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    opacity:0;
+    font-size: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+/*Form aggiunta prodotto*/
+.container textarea{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+.container input[type=number]{
+    width: 23%;
+}
+.container input[type=file]{
+    border: none;
+}
+
+/*logout button*/
+.logout{
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: 10% 0 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px){
+    .ricetta {
+        max-width: 45%;
+    }
+
+    .social, .pagamenti{
+        width: 10%;
+    }
+    .contatti{
+        width: 60%;
+    }
+
+    .card{
+        display: inline-block;
+    }
+    .admin{
+        text-align: center;
+    }
+
+    .info{
+        display: inline-block;
+        text-align: left;
+    }
+    .info img{
+        float: left;
+    }
+    .order, .order1{
+        width: 80%;
+    }
+    .order button, .order1 button{
+        width: 45%;
+        margin-bottom: 2%;
+        margin-right: 5%;
+    }
+    .product{
+        margin: 2%;
+    }
+}
