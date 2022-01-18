@@ -39,6 +39,7 @@ nav a:not(.right) {
     padding: 14px 20px;
     text-decoration: none;
 }
+/*
 nav a.right {
     float: right;
     display: inline-flex;
@@ -48,7 +49,7 @@ nav a.right {
     padding: 14px 20px;
     text-decoration: none;
 }
-  
+*/
 /* Change color on hover */
 nav a:hover {
     background-color: #ddd;
@@ -109,9 +110,7 @@ main section footer button{
 }
 
 main section div{
-    /*display: inline-block;*/
     text-align: center;
-    /*margin: 2%;*/
 }
 
 main section div span{
@@ -129,7 +128,11 @@ main form input {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-main form button {
+main form input[type=checkbox]{
+    width: 5%;
+    text-align: left;
+}
+main form button, .reg-button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -158,6 +161,7 @@ main form p span{
 /* Aside*/
 aside {
     background-color: #f1f1f1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 10px;
     margin: 2%;
     text-align: center;

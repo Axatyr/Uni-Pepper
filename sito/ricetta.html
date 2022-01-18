@@ -8,46 +8,47 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css" >
     <link rel="stylesheet" href="../css/styleClass.css" >
-    <title>UniPeppers - Ordini</title>
+    <title>UniPeppers - Ricetta</title>
 </head>
 <body>
     <header>
         <img src="../upload/logo.png" alt="logo"/>
     </header>
-      
     <nav>
         <a href="home.html">Home</a>
-        <a href="ricette.html">Ricette</a>
+        <a href="ricette.html" class="active">Ricette</a>
         <a href="varieta.html">Variet&agrave;</a>
         <a href="assistente.html">Assistente</a>
         <a href="preferiti.html" class="right"><span class="fas fa-heart" alt="Preferiti"></span></a>
         <a href="carrello.html" class="right"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
         <a href="login.html" class="right active"><span class="fas fa-user-alt" alt="Utente"></span></a>
-    </nav>
+    </nav>        
     <main>
-        <h1><span class="fas fa-shopping-bag"></span> I miei ordini</h1>
-        <!-- Ordini -->
-        <div class="order">
-            <div>
-                <span class="fas fa-clipboard-list"></span>
-            </div>            
-            <h3>Numero ordine</h3>
-            <p>Data ordine: 12/12/21</p>
-            <p>Stato: stato</p>
-            <p>
-                <button type="button"><a href="info-ordine.html"><span class="fas fa-info-circle"></span> Info ordine</a></button>
-            </p>
-        </div>
-        <div class="order">
-            <div>
-                <span class="fas fa-clipboard-list"></span>
-            </div>            
-            <h3>Numero ordine</h3>
-            <p>Data ordine: 12/12/21</p>
-            <p>Stato: stato</p>
-            <p>
-                <button type="button"><a href="info-ordine.html"><span class="fas fa-info-circle"></span> Info ordine</a></button>
-            </p>
+        <div class="info-ricetta">
+            <img src="../upload/recipes/penne-arrabbiata.jpg" alt="Immagine prodotto"/>
+            <div class="livello">
+                <h1>Penne all'arrabbiata</h1>            
+                <p><span class="fas fa-concierge-bell"></span> media </p>
+                <p><span class="fas fa-users"></span> 4 </p>
+                <p><span class="fas fa-clock"></span> 20min </p>
+                <p><span class="fas fa-euro-sign"></span> basso </p>
+                <p><span class="fas fa-pepper-hot"></span> elevato </p>
+            </div>
+            <div class="ingredienti">
+                <h3>Ingredienti:</h3>
+                <ul>
+                    <li>sale</li>
+                    <li>pepe</li>
+                    <li>pasta</li>
+                    <li>pomodoro</li>
+                    <li>peperoncino</li>
+                    <li>prezzemolo</li>
+                </ul>
+            </div>
+            <div class="procedimento">
+                <h3>Procedimento:</h3>
+                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+            </div>                                        
         </div>
     </main>
     <aside>
