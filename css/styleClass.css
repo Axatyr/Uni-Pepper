@@ -43,7 +43,6 @@ nav a.icon {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-inline: 25%;
 }
 
 .assResult div{
@@ -606,6 +605,7 @@ hr {
         margin-right: 2%;
     }
     .procedimento{
+        vertical-align: top;
         max-width: 77%;
     }
     .sec-varieta div{

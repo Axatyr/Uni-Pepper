@@ -11,6 +11,8 @@ if(isset($_GET["id"])){
     $idricetta = $_GET["id"];
 }
 $templateParams["ricetta"] = $dbh->getRecipeById($idricetta);
+$ingredientiRicetta = explode(',', $templateParams["ricetta"][0]["Ingredienti"]);
+
 
 
 require 'template/base.php';

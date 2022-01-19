@@ -8,8 +8,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" >
     <link rel="stylesheet" href="css/styleClass.css" >
+    <link rel="stylesheet" href="css/carrello.css" >
     <!-- Script -->
-
+    <script type="text/javascript" src="js/functions.js"></script>
     <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 <body>

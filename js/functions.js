@@ -160,7 +160,6 @@ function reset(){
     document.cookie = "iddomanda=1";
     document.cookie = "risultato=-1";
     location.reload(true);
-
 }
 
 let elements = getCookie("elements");
