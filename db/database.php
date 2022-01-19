@@ -5,7 +5,7 @@ class DatabaseHelper{
     public function __construct($servername, $username, $password, $dbname, $port){
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
+        die("Connection failed: " /*. $db->connect_error*/);
         }        
     }
 
@@ -113,6 +113,86 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPreferiti($id){
+        $query = "SELECT preferiti.IdProdotto, NomeProdotto, ImmagineProdotto, PrezzoProdotto FROM preferiti, prodotti WHERE IdUtente=? AND preferiti.IdProdotto=prodotti.IdProdotto";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getOrdini($id){
+        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto FROM ordini, utenti, ordiniprodotti, prodotti WHERE ordini.IdUtente = ? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto GROUP BY ordiniprodotti.IdOrdine";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getOrdineById($id){
+        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto, IdPagamento FROM ordini, ordiniprodotti, prodotti WHERE ordini.IdOrdine=? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getProdottiFromOrdine($id){
+        $query = "SELECT NomeProdotto FROM prodotti, ordiniprodotti WHERE IdOrdine=? AND ordiniprodotti.IdProdotto = prodotti.IdProdotto";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function getDati($id){
+        $query = "SELECT Nome, Cognome, Mail FROM utenti WHERE IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function checkLogin($email, $password){
+        $query = "SELECT IdUtente, Nome, Mail, Password, TipologiaUtente FROM utenti WHERE Mail = ? AND Password = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    public function inserisciUtente($nome, $cognome, $mail, $password, $tipo){
+        $query = "INSERT INTO utenti (Nome, Cognome, Mail, Password, TipologiaUtente) VALUES (?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssss', $nome, $cognome, $mail, $password, $tipo);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function rifornisciProdotto($idprodotto, $quantita)
+    {
+        $query = "UPDATE prodotti SET QuantitaProdotto = QuantitaProdotto + ? WHERE IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$quantita, $idprodotto);
+        $stmt->execute();
+    }
+
+    public function updateStato($id, $stato){
+        $query = "UPDATE ordini SET StatoOrdine = ? WHERE IdOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si',$stato, $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    }
 
 }
 ?>

@@ -5,15 +5,8 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Uni-Pepper's - Preferiti";
 $templateParams["nome"] = "preferiti.php";
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
-
-$elementiPreferiti=0;
-if(isset($_COOKIE["favElem"])){
-    $elementiCarrello = $_COOKIE["favElem"];
-} 
-else{
-    setcookie("favElem", "0");
-}
-//Preferiti Template
+//Home Template
+$templateParams["preferiti"] = $dbh->getPreferiti($_SESSION["idutente"]);
 
 require 'template/base.php';
 ?>
