@@ -60,7 +60,7 @@ class DatabaseHelper{
     }
 
     public function getRandomRecipe($n){
-        $stmt = $this->db->prepare("SELECT IdRicetta, NomeRicetta, ImmagineRicetta, Tempo, Costo FROM ricette ORDER BY RAND() LIMIT ?");
+        $stmt = $this->db->prepare("SELECT IdRicetta, NomeRicetta, ImmagineRicetta, Difficolta, Tempo, Costo FROM ricette ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();

@@ -8,24 +8,26 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" >
     <link rel="stylesheet" href="css/styleClass.css" >
-    <title>UniPeppers - Home</title>
+    <!-- Script -->
+
+    <title><?php echo $templateParams["titolo"]; ?></title>
 </head>
 <body>
     <header>
-        <img src="../upload/logo.png" alt="logo"/>
+        <img src="upload/logo.png" alt="logo"/>
     </header>
       
     <nav>
-        <a href="home.html" class="active">Home</a>
-        <a href="ricette.html">Ricette</a>
-        <a href="varieta.html">Variet&agrave;</a>
-        <a href="assistente.html">Assistente</a>
+        <a href="index.php" <?php isActive("index.php");?>>Home</a>
+        <a href="ricette.php" <?php isActive("ricette.php");?>>Ricette</a>
+        <a href="varieta.php" <?php isActive("varieta.php");?>>Variet&agrave;</a>
+        <a href="assistente.php" <?php isActive("assistente.php");?>>Assistente</a>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fas fa-bars"></i>
         </a>
-        <a href="preferiti.html" class="right"><span class="fas fa-heart" alt="Preferiti"></span></a>
-        <a href="carrello.html" class="right"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
-        <a href="login.html" class="right"><span class="fas fa-user-alt" alt="Utente"></span></a>
+        <a href="preferiti.php" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" alt="Preferiti"></span></a>
+        <a href="carrello.php" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
+        <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" alt="Utente"></span></a>
     </nav>        
     <main>
         <?php if(isset($templateParams["nome"])){
@@ -35,19 +37,20 @@
     </main>
     <aside>
         <h3>Potrebbe interessarti:</h3>
+        <?php $ricettacasuale = $templateParams["ricettecasuali"][0];?>
         <div class="aside">
-            <img src="upload/recipes/penne-arrabbiata.jpg" alt="Ricetta">
+            <img src="<?php echo UPLOAD_DIR_RECIPES.$ricettacasuale["ImmagineRicetta"]?>" alt="Immagine <?php echo $ricettacasuale["NomeRicetta"]?>">
             <div class="overlay">
-                <a href="ricetta.html"><h4>Nome Ricetta</h4></a>
-                <span class="fas fa-concierge-bell">difficoltà</span>
-                <span class="fas fa-clock">tempo</span>
-                <span class="fas fa-euro-sign">costo</span>
+                <a href="ricetta.php?id=<?php echo $ricettacasuale["IdRicetta"]; ?>"><h4><?php echo $ricettacasuale["NomeRicetta"]?></h4></a>
+                <span class="fas fa-concierge-bell"> <?php echo $ricettacasuale["Difficolta"]?></span>
+                <span class="fas fa-clock"> <?php echo $ricettacasuale["Tempo"]?></span>
+                <span class="fas fa-euro-sign"> <?php echo $ricettacasuale["Costo"]?></span>
             </div>
         </div>
         <div class="aside">
             <img src="upload/peperonciniVar.jpg" alt="Varietà">
             <div class="overlay">
-                <a href="ricetta.html"><h4>Scopri tutte le variet&agrave;!</h4></a>
+                <a <?php isActive("varieta.php");?> href="varieta.php"><h4>Scopri tutte le variet&agrave;!</h4></a>
             </div>
         </div>
     </aside>      
@@ -60,8 +63,8 @@
         </section>
         <section class="contatti">
             <p>©2021 Uni-Pepper Tutti i Diritti Riservati</p>
-            <a href="privacy.html">Politica sulla Privacy & Cookie</a>
-            <a href="termini.html">Termini e Condizioni</a>
+            <a href="privacy.php">Politica sulla Privacy & Cookie</a>
+            <a href="termini.php">Termini e Condizioni</a>
         </section>
         <section class="pagamenti">
             <p>Pagamenti con:</p>

@@ -5,4 +5,10 @@ function isActive($pagename){
     }
 }
 
+function isEchoActive($pagename){
+    if(basename($_SERVER['PHP_SELF'])==$pagename){
+        echo "active";
+    }
+}
+
 ?>
