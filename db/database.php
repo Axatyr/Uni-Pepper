@@ -132,7 +132,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function getOrdineById($id){
-        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto, IdPagamento FROM ordini, ordiniprodotti, prodotti WHERE ordini.IdOrdine=? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto";
+        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto FROM ordini, ordiniprodotti, prodotti WHERE ordini.IdOrdine=? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$id);
         $stmt->execute();
@@ -176,6 +176,15 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
+    public function inserisciProdotto($nomeprodotto, $imgprodotto, $prezzo, $descrizioneprodotto, $quantita, $fornitore){
+        $query = "INSERT INTO prodotti (NomeProdotto, ImmagineProdotto, DescrizioneProdotto, PrezzoProdotto, QuantitaProdotto, IdFornitore) VALUES (?,?,?,?,?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssdii',$nomeprodotto, $imgprodotto, $descrizioneprodotto, $prezzo, $quantita, $fornitore);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
     public function rifornisciProdotto($idprodotto, $quantita)
     {
         $query = "UPDATE prodotti SET QuantitaProdotto = QuantitaProdotto + ? WHERE IdProdotto = ?";
@@ -192,6 +201,16 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result;
+    }
+
+    public function getProdottiByIdFornitore($id){
+        $query = "SELECT IdProdotto, NomeProdotto, ImmagineProdotto, PrezzoProdotto, QuantitaProdotto FROM prodotti WHERE IdFornitore=?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }

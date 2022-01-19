@@ -14,7 +14,7 @@
 <button class="reg-button" type="button" onclick="document.getElementById('registrazione').style.display='block'">Registrati</button>
 <div id="registrazione" class="modal">
     <span onclick="document.getElementById('registrazione').style.display='none'" class="close" title="Close Modal">&times;</span>
-    <form class="modal-content" action="processa-utente.php" method="POST">
+    <form class="modal-content" action="processa-form.php" method="POST" enctype="multipart/form-data">
         <div class="container">
             <h1>Registrati</h1>
             <p>Completa i seguenti campi per creare un account.</p>
