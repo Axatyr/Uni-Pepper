@@ -1,5 +1,16 @@
-<h1><span class="fas fa-shopping-cart"></span> Carrello</h1>
-        <div class="table-div">
+<h1><span class="fas fa-shopping-cart"></span> <?php echo $templateParams["titolo_pagina"]; ?></h1>
+    <!-- Modalita vuoto-->
+    <?php if($elementiCarrello == 0) { ?>
+        <section class="empty-cart">
+            <span class="fas fa-cart-arrow-down"></span> 
+            <div>
+                <h4>Il tuo carrello è vuoto</h4>
+                <p>Aggiungi degli elementi e procedi al pagamento</p>  
+            </div>      
+        </section>
+    <?php } else { ?>
+    <!-- Modalita con elementi-->    
+    <div class="table-div">
           <div>
             <table>
               <thead>
@@ -10,7 +21,7 @@
               <tbody>
                   <tr>
                       <td headers="img">
-                        <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                        <a><img src="upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
                       </td>
                       <td headers="articolo">
                         <a href="#">Nome Prodotto</a>
@@ -26,69 +37,12 @@
                         <button type="button"><span class="fas fa-trash"></span></button>
                       </td>
                   </tr>
-                  <tr>
-                    <td headers="img">
-                      <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
-                    </td>
-                    <td headers="articolo">
-                      <a href="#">Nome Prodotto</a>
-                    </td>
-                    <td headers="prezzo">
-                        <p>10,50€</p>
-                    </td>
-                    <td headers="quantita">
-                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-                    </td>
-                    <td headers="button">
-                      <button type="button"><span class="fas fa-heart"></span></button>
-                      <button type="button"><span class="fas fa-trash"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td headers="img">
-                      <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
-                    </td>
-                    <td headers="articolo">
-                      <a href="#">Nome Prodotto</a>
-                    </td>
-                    <td headers="prezzo">
-                        <p>10,50€</p>
-                    </td>
-                    <td headers="quantita">
-                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-                    </td>
-                    <td headers="button">
-                      <button type="button"><span class="fas fa-heart"></span></button>
-                      <button type="button"><span class="fas fa-trash"></span></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td headers="img">
-                      <a><img src="../upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
-                    </td>
-                    <td headers="articolo">
-                      <a href="#">Nome Prodotto</a>
-                    </td>
-                    <td headers="prezzo">
-                        <p>10,50€</p>
-                    </td>
-                    <td headers="quantita">
-                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
-                    </td>
-                    <td headers="button">
-                      <button type="button"><span class="fas fa-heart"></span></button>
-                      <button type="button"><span class="fas fa-trash"></span></button>
-                    </td>
-                  </tr>
               </tbody>
             </table>
           </div>
             <div class="container">
               <h4>Riepilogo ordine <span class="prezzo" style="color:black"><span class="fa fa-shopping-cart"></span> <b>4</b></span></h4>
               <p><a href="#">Prodotto 1</a> <span class="prezzo">$15</span></p>
-              <p><a href="#">Prodotto 2</a> <span class="prezzo">$5</span></p>
-              <p><a href="#">Prodotto 3</a> <span class="prezzo">$8</span></p>
-              <p><a href="#">Prodotto 4</a> <span class="prezzo">$2</span></p>
               <hr>
               <p>Totale <span class="prezzo" style="color:black"><b>$30</b></span></p>
             </div>
@@ -140,10 +94,42 @@
                       </div>
                     </div>
                     
-                  </div>
-                  <input type="submit" value="Procedi all'acquisto" class="btn">
+                </div>
+
+                <!-- Procedi al pagamento -->
+                <button onclick="document.getElementById('pagamento-avvenuto').style.display='block'" class="btn" >Procedi all'acquisto</button>
+
+                <!-- The Modal (Contiene Pagamento avvenuto) -->
+                <div id="pagamento-avvenuto" class="modal">
+                    <form class="modal-content">
+                        <div class="container-pay" >
+                            <h1>Pagamento avvenuto con successo</h1>
+                            <div>
+                                <button type="button" class="btn">Continua</button>
+                            </div>
+                        </div>
+                        <script>
+                        // Get the modal
+                        var modal = document.getElementById('pagamento-avvenuto');
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function(event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                        </script>
+                    </form>
+                </div>
                 </form>
-              </div>
             </div>
+        </div>
             
-          </div>
+    </div>
+    <?php } ?>
+
+
+
+    
+    
+

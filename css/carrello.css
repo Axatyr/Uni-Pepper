@@ -130,6 +130,15 @@ label {
     float: right;
     color: grey;
   }
+
+.empty-cart span {
+    font-size: 400%;
+}
+
+.empty-cart div, .empty-cart span {
+    display: inline-block;
+    margin: 0 5% 0 5%;
+}
   
   /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
   @media (max-width: 800px) {
