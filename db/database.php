@@ -213,5 +213,22 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function moveToPreferiti($idprodotto, $utente){
+        $query = "INSERT INTO preferiti (IdUtente, IdProdotto) VALUES (?,?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $utente, $idprodotto);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function removeFromPreferiti($idprodotto, $utente){
+        $query = "DELETE FROM preferiti WHERE IdProdotto = ? AND IdUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idprodotto, $utente);
+        $stmt->execute();
+    }
+
+
 }
 ?>

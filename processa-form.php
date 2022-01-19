@@ -47,7 +47,7 @@ if($_POST["action"]==2){
     }
     header("location: gestione-prodotti.php?formmsg=".$msg);
 }
-/*Rifornimento <prodotto></prodotto>*/
+/*Rifornimento prodotto*/
 if($_POST["action"]==3){
     //Aggiorno la quantità
     $quantita = htmlspecialchars($_POST["disponibilita"]);
@@ -55,5 +55,23 @@ if($_POST["action"]==3){
 
     $dbh->rifornisciProdotto($idprodotto, $quantita);
     header("location: gestione-prodotti.php?formmsg=".$msg);
+}
+/*Rimuovi dai preferiti*/
+if($_POST["action"]==4){
+    $idprodotto = htmlspecialchars($_POST["idprodotto"]);
+    $utente = $_SESSION["idutente"];
+
+    $dbh->removeFromPreferiti($idprodotto, $utente);
+
+    header("location: preferiti.php?formmsg=".$msg);
+}
+/*Aggiungi a preferiti*/
+if($_POST["action"]==5){
+    $idprodotto = htmlspecialchars($_POST["idprodotto"]);
+    $utente = $_SESSION["idutente"];
+
+    $dbh->moveToPreferiti($idprodotto, $utente);
+
+    header("location: preferiti.php?formmsg=".$msg);
 }
 ?>

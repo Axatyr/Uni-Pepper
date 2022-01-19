@@ -6,7 +6,11 @@
     <h3><a href="prodotto.php"><?php echo $preferito["NomeProdotto"] ?></a></h3>
     <p class="price"><?php echo $preferito["PrezzoProdotto"] ?></p>
     <p><button type="button"><span class="fas fa-cart-plus"></span></button>
-    <button type="button"><span class="fas fa-trash"></span></button>
+    <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="idprodotto" value="<?php echo $preferito["IdProdotto"]; ?>" />
+        <input type="hidden" name="action" value="4" />
+        <button type="submit"><span class="fas fa-trash"></span></button>   
+    </form>
     </p>
 </div>
 <?php endforeach; ?>
