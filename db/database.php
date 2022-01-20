@@ -229,6 +229,86 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function checkEmptyCart($utente){
+        $statoCarrello = "Carrello";
+        $query = "SELECT IdOrdine FROM ordini WHERE IdUtente = ? AND StatoOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('is',$utente, $statoCarrello);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createNewCart($idOrdine, $utente){
+        $statoCarrello = "Carrello";
+        $totaleCarrello = 0;
+        $dataCorrente = date("Y-m-d");
+        $query = "INSERT INTO ordini (IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, IdUtente) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issdi', $idOrdine, $dataCorrente, $statoCarrello, $totaleCarrello, $utente);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function checkProductOnCart($idOrdine, $idprodotto){
+        $query = "SELECT QuantitaPr FROM ordiniprodotti WHERE IdOrdine = ? AND IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idOrdine, $idprodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createNewProductOnCart($idOrdine, $idprodotto, $quantita){
+        $query = "INSERT INTO ordiniprodotti (IdOrdine, IdProdotto, QuantitaPr) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $idOrdine, $idprodotto, $quantita);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
+    public function addQuantityProduct($idOrdine, $idprodotto, $quantita){
+        $query = "UPDATE ordiniprodotti SET QuantitaPr = ? WHERE IdOrdine = ? AND IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $quantita, $idOrdine, $idprodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    }
+
+    public function updateTotalCart($idOrdine, $totale){
+        $query = "UPDATE ordini SET TotalePrezzo = TotalePrezzo + ? WHERE IdOrdine = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('di', $totale, $idOrdine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result;
+    }
+
+    public function getPriceProduct($idprodotto){
+        $query = "SELECT PrezzoProdotto FROM prodotti WHERE IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$idprodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductOnCart($currentCart){
+        $query = "SELECT ordiniprodotti.IdProdotto, QuantitaPr, NomeProdotto, ImmagineProdotto, PrezzoProdotto FROM ordiniprodotti, prodotti WHERE IdOrdine = ? AND ordiniprodotti.IdProdotto=prodotti.IdProdotto";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$currentCart);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

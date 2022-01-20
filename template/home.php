@@ -5,7 +5,12 @@
             <img src="<?php echo UPLOAD_DIR_VARIETY.$prodotto["ImmagineProdotto"]; ?>" alt="Immagine <?php echo $prodotto["NomeProdotto"]; ?>"/>
             <h3><a href="prodotto.php?id=<?php echo $prodotto["IdProdotto"]; ?>"> <?php echo $prodotto["NomeProdotto"]; ?></a></h3>
             <p class="price"><?php echo number_format($prodotto["PrezzoProdotto"], 2); ?> €</p>
-            <button type="button"><span class="fas fa-cart-plus"></span></button>
+            <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"];?>" />
+                <input type="hidden" name="action" value="7" />
+                <input type="hidden" name="quantita" value="1" />
+                <button type="submit"><span class="fas fa-cart-plus"></span></button>
+            </form>
             <form action="processa-form.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"];?>" />
                 <input type="hidden" name="action" value="5" />

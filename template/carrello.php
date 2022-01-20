@@ -1,6 +1,6 @@
 <h1><span class="fas fa-shopping-cart"></span> <?php echo $templateParams["titolo_pagina"]; ?></h1>
     <!-- Modalita vuoto-->
-    <?php if($elementiCarrello == 0) { ?>
+    <?php if(count($currentCart) == 0) { ?>
         <section class="empty-cart">
             <span class="fas fa-cart-arrow-down"></span> 
             <div>
@@ -19,24 +19,31 @@
                   </tr>
               </thead>
               <tbody>
+                <?php foreach($templateParams["prodottoCarrello"] as $prodotto): ?>
                   <tr>
                       <td headers="img">
-                        <a><img src="upload/variety/Cayenne.jpg" alt="Nome Prodotto"/></a>
+                        <a><img src="<?php echo UPLOAD_DIR_VARIETY.$prodotto["ImmagineProdotto"]; ?>" alt="Immagine <?php echo $prodotto["NomeProdotto"];?>"/></a>
                       </td>
                       <td headers="articolo">
-                        <a href="#">Nome Prodotto</a>
+                        <a href="#"><?php echo $prodotto["NomeProdotto"];?></a>
                       </td>
                       <td headers="prezzo">
-                        <p>10,50€</p>
+                        <p><?php echo number_format($prodotto["PrezzoProdotto"],2);?> €</p>
                       </td>
                       <td headers="quantita">
-                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
+                        <input type="number" id="quantita" name="quantita" min="1" value="<?php echo $prodotto["QuantitaPr"];?>"/>
                       </td>
                       <td headers="button">
-                        <button type="button"><span class="fas fa-heart"></span></button>
+                        <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                          <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"];?>" />
+                          <input type="hidden" name="action" value="6" />
+                          <button type="submit"><span class="fas fa-heart"></span></button>
+                        </form>
+                        <!-- Da fare -->
                         <button type="button"><span class="fas fa-trash"></span></button>
                       </td>
                   </tr>
+                <?php endforeach;?>
               </tbody>
             </table>
           </div>

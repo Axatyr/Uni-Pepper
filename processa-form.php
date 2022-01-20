@@ -74,4 +74,41 @@ if($_POST["action"]==5){
 
     header("location: preferiti.php?formmsg=".$msg);
 }
+
+/*Aggiungi al carrello*/
+if($_POST["action"]==7){
+    if(!isUserLoggedIn()){
+        header("location: login.php");
+    }
+    $idprodotto = htmlspecialchars($_POST["idprodotto"]);
+    $quantita = htmlspecialchars($_POST["quantita"]);
+
+    $utente = $_SESSION["idutente"];
+    
+    $idOrdine = $dbh->checkEmptyCart($utente);
+
+    // Aggiungi ordine
+    if(count($idOrdine) == 0){
+        $dbh->createNewCart($idOrdine, $utente);
+    }
+    //Aggiungi prodotto
+    $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
+    if(count($quantitaProdotto) == 0){
+        $dbh->createNewProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto, $quantita);
+    }
+    else {
+        $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
+        $dbh->addQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
+    }
+
+    //Aggiorna totale ordine
+    $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
+    $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
+    $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
+
+    //Da andare nella home o prodotto o preferiti
+    header("location: carrello.php?formmsg=".$msg);
+}
+
+
 ?>
