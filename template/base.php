@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css" >
     <link rel="stylesheet" href="css/styleClass.css" >
     <link rel="stylesheet" href="css/carrello.css" >
+    <link rel="stylesheet" href="css/notifiche.css" >
     <!-- Script -->
     <script type="text/javascript" src="js/functions.js"></script>
     <title><?php echo $templateParams["titolo"]; ?></title>
@@ -17,21 +18,26 @@
     <header>
         <img src="upload/logo.png" alt="logo"/>
     </header>
-      
     <nav>
         <a href="index.php" <?php isActive("index.php");?>>Home</a>
         <a href="ricette.php" <?php isActive("ricette.php");?>>Ricette</a>
         <a href="varieta.php" <?php isActive("varieta.php");?>>Variet&agrave;</a>
         <a href="assistente.php" <?php isActive("assistente.php");?>>Assistente</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fas fa-bars"></i>
-        </a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><span class="fas fa-bars"></span></a> 
+        <a id="main" onclick="openNav()" class="right"><span class="fas fa-bell" alt="Notifiche"></span></a>
         <a href="preferiti.php" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" alt="Preferiti"></span></a>
         <a href="carrello.php" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
         <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" alt="Utente"></span></a>
-    </nav>        
+    </nav>    
+    <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <?php if(isset($_SESSION["idutente"])) { foreach($templateParams["notifica"] as $notifica): ?>
+                <div class="container-notifica">
+                    <p><?php echo $notifica["Testo"];?></p>
+                </div>
+            <?php endforeach; }?>
+    </div>
     <main>
-
         <?php if(isset($templateParams["nome"])){
         require($templateParams["nome"]);
         }
