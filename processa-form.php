@@ -66,13 +66,21 @@ if($_POST["action"]==4){
     header("location: preferiti.php?formmsg=".$msg);
 }
 /*Aggiungi a preferiti*/
-if($_POST["action"]==5){
+/*Aggiungi a preferiti*/
+if($_POST["action"]==5||$_POST["action"]==6){
     $idprodotto = htmlspecialchars($_POST["idprodotto"]);
     $utente = $_SESSION["idutente"];
 
-    $dbh->moveToPreferiti($idprodotto, $utente);
-
-    header("location: preferiti.php?formmsg=".$msg);
+    $res = $dbh->checkProductInPreferiti($idprodotto, $utente);
+    if(count($res)!=0){
+        $dbh->moveToPreferiti($idprodotto, $utente);
+    }
+    if($_POST["action"]==5){
+        header("location: index.php?formmsg=".$msg);
+    }
+    else{
+        header("location: carrello.php?formmsg=".$msg);
+    }
 }
 
 /*Aggiungi al carrello*/

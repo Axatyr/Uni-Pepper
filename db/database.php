@@ -231,7 +231,7 @@ class DatabaseHelper{
 
     public function checkEmptyCart($utente){
         $statoCarrello = "Carrello";
-        $query = "SELECT IdOrdine FROM ordini WHERE IdUtente = ? AND StatoOrdine = ?";
+        $query = "SELECT IdOrdine, TotalePrezzo FROM ordini WHERE IdUtente = ? AND StatoOrdine = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('is',$utente, $statoCarrello);
         $stmt->execute();
@@ -318,6 +318,14 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    public function checkProductInPreferiti($idprodotto, $utente){
+        $query = "SELECT IdProdotto FROM preferiti WHERE IdUtente = ? AND IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$utente, $idprodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
