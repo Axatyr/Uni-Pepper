@@ -98,7 +98,7 @@ if($_POST["action"]==7 || $_POST["action"]==8){
     }
     else {
         $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
-        $dbh->addQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
+        $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
     }
 
     //Aggiorna totale ordine
@@ -130,6 +130,30 @@ if($_POST["action"]==9){
     $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
 
     header("location: carrello.php?formmsg=".$msg);
+}
+
+/*Aggiorna carrello*/
+if($_POST["action"]==10 || $_POST["action"]==11){
+    $idprodotto = htmlspecialchars($_POST["idprodotto"]);
+    $quantita = htmlspecialchars($_POST["quantita"]);
+    $utente = $_SESSION["idutente"];
+    
+    $idOrdine = $dbh->checkEmptyCart($utente);
+
+    // Controllo ordine
+    if(count($idOrdine) != 0){
+        //Aggiungi prodotto
+        $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
+        $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
+        $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
+
+        //Aggiorna totale ordine
+        $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
+        $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
+        $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
+
+        header("location: carrello.php?formmsg=".$msg);
+    }
 }
 
 //Trasferimento ad ordini da carrello bisogna aggionare anche i valori inseriti nel form

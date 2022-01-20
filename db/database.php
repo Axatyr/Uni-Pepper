@@ -271,7 +271,7 @@ class DatabaseHelper{
         return $stmt->insert_id;
     }
 
-    public function addQuantityProduct($idOrdine, $idprodotto, $quantita){
+    public function setQuantityProduct($idOrdine, $idprodotto, $quantita){
         $query = "UPDATE ordiniprodotti SET QuantitaPr = ? WHERE IdOrdine = ? AND IdProdotto = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii', $quantita, $idOrdine, $idprodotto);

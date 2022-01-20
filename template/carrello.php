@@ -31,7 +31,19 @@
                         <p><?php echo number_format($prodotto["PrezzoProdotto"],2);?> €</p>
                       </td>
                       <td headers="quantita">
-                        <input type="number" id="quantita" name="quantita" min="1" value="<?php echo $prodotto["QuantitaPr"];?>"/>
+                        <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                          <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"];?>" />
+                          <input type="hidden" name="action" value="10" />
+                          <input type="hidden" name="quantita" value="1" />
+                          <button type="submit"><span class="fas fa-plus"></span></button>
+                        </form>
+                        <p> <?php echo $prodotto["QuantitaPr"];?></p>
+                        <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                          <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"];?>" />
+                          <input type="hidden" name="action" value="10" />
+                          <input type="hidden" name="quantita" value="-1" />
+                          <button type="submit"><span class="fas fa-minus"></span></button>
+                        </form>
                       </td>
                       <td headers="button">
                         <form action="processa-form.php" method="POST" enctype="multipart/form-data">
@@ -52,7 +64,9 @@
           </div>
             <div class="container">
               <h4>Riepilogo ordine <span class="prezzo" style="color:black"><span class="fa fa-shopping-cart"></span> <b>4</b></span></h4>
-              <p><a href="#">Prodotto 1</a> <span class="prezzo">$15</span></p>
+              <?php foreach($templateParams["prodottoCarrello"] as $prodotto): ?>
+              <p><a href="#"><?php echo $prodotto["NomeProdotto"];?></a> <span class="prezzo"><?php echo number_format($prodotto["PrezzoProdotto"]* $prodotto["QuantitaPr"],2);?> €</span></p>
+              <?php endforeach;?>
               <hr>
               <p>Totale <span class="prezzo" style="color:black"><b>$30</b></span></p>
             </div>
