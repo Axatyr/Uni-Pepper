@@ -310,5 +310,14 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function removeFromCart($idOrdine, $idprodotto){
+        $query = "DELETE FROM ordiniprodotti WHERE IdOrdine = ? AND IdProdotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idOrdine, $idprodotto);
+        $stmt->execute();
+    }
+
+
 }
 ?>

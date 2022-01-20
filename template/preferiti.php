@@ -7,7 +7,7 @@
     <p class="price"><?php echo number_format($preferito["PrezzoProdotto"],2); ?> €</p>
     <form action="processa-form.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="idprodotto" value="<?php echo $preferito["IdProdotto"];?>" />
-        <input type="hidden" name="action" value="7" />
+        <input type="hidden" name="action" value="8" />
         <input type="hidden" name="quantita" value="1" />
         <button type="submit"><span class="fas fa-cart-plus"></span></button>
     </form>

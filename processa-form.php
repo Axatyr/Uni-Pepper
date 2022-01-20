@@ -76,7 +76,7 @@ if($_POST["action"]==5){
 }
 
 /*Aggiungi al carrello*/
-if($_POST["action"]==7){
+if($_POST["action"]==7 || $_POST["action"]==8){
     if(!isUserLoggedIn()){
         header("location: login.php");
     }
@@ -107,8 +107,33 @@ if($_POST["action"]==7){
     $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
 
     //Da andare nella home o prodotto o preferiti
+    if($_POST["action"]==7) { 
+        header("location: index.php?formmsg=".$msg);
+    } else if($_POST["action"]==8) {
+        header("location: preferiti.php?formmsg=".$msg);
+    } 
+}
+
+/*Rimuovi dal carrello*/
+if($_POST["action"]==9){
+    $idprodotto = htmlspecialchars($_POST["idprodotto"]);
+
+    $utente = $_SESSION["idutente"];
+    
+    $idOrdine = $dbh->checkEmptyCart($utente);
+
+    $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
+    $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
+    $totaleDaSottrarre = -($prezzoProdotto[0]["PrezzoProdotto"] * $quantitaProdotto[0]["QuantitaPr"]);
+
+    $dbh->removeFromCart($idOrdine[0]["IdOrdine"], $idprodotto);
+    $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
+
     header("location: carrello.php?formmsg=".$msg);
 }
 
+//Trasferimento ad ordini da carrello bisogna aggionare anche i valori inseriti nel form
+
+// Al logout bisogna fare un controllo, se il carrello ha 0 elementi, viene eliminato
 
 ?>

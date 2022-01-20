@@ -39,8 +39,11 @@
                           <input type="hidden" name="action" value="6" />
                           <button type="submit"><span class="fas fa-heart"></span></button>
                         </form>
-                        <!-- Da fare -->
-                        <button type="button"><span class="fas fa-trash"></span></button>
+                        <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                          <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"]; ?>" />
+                          <input type="hidden" name="action" value="9" />
+                          <button type="submit"><span class="fas fa-trash"></span></button>   
+                        </form>
                       </td>
                   </tr>
                 <?php endforeach;?>
