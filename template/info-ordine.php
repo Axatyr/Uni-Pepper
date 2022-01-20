@@ -9,7 +9,7 @@
     <ul>
         <li><h3>Numero Ordine: <?php echo $ordine["IdOrdine"]; ?></h3></li>
         <li>Data: <?php echo $ordine["DataOrdine"]; ?></li>
-        <li>Totale: <?php echo $ordine["TotalePrezzo"]; ?>€</li>
+        <li>Totale: <?php echo number_format($ordine["TotalePrezzo"], 2); ?> €</li>
         <li>Stato: <?php echo $ordine["StatoOrdine"]; ?></li>
         <li>Prodotti ordinati:</li>
         <ul>
@@ -54,7 +54,7 @@
         }
     </style>
     <?php endif; ?>
-    <h3><span class="fas fa-route"></span> Spedizione</h3>
+    <h2><span class="fas fa-route"></span> Spedizione</h2>
     <div class="stato">
         <div class="effettuato">
             <span class="fas fa-clipboard-check"></span>

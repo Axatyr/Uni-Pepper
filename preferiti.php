@@ -6,6 +6,7 @@ if(!isUserLoggedIn()){
 }
 //Base Template
 $templateParams["titolo"] = "Uni-Pepper's - Preferiti";
+$templateParams["titolo_pagina"] = "Preferiti";
 $templateParams["nome"] = "preferiti.php";
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
 //Home Template

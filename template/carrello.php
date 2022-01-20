@@ -27,10 +27,10 @@
                         <a href="#">Nome Prodotto</a>
                       </td>
                       <td headers="prezzo">
-                          <p>10,50€</p>
+                        <p>10,50€</p>
                       </td>
                       <td headers="quantita">
-                          <input type="number" id="quantita" name="quantita" min="1" value="1"/>
+                        <input type="number" id="quantita" name="quantita" min="1" value="1"/>
                       </td>
                       <td headers="button">
                         <button type="button"><span class="fas fa-heart"></span></button>
