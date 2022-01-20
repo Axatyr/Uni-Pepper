@@ -120,7 +120,6 @@ if($_POST["action"]==9){
         $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
         $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
         $totaleDaSottrarre = -($prezzoProdotto[0]["PrezzoProdotto"] * $quantitaProdotto[0]["QuantitaPr"]);
-
         $dbh->removeFromCart($idOrdine[0]["IdOrdine"], $idprodotto);
         $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
     }
@@ -140,13 +139,18 @@ if($_POST["action"]==10){
         //Aggiungi prodotto
         $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
         $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
-        $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
-
-        //Aggiorna totale ordine
         $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
-        $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
-        $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
+        if($quantitaProdotto[0]["QuantitaPr"] == 0) {
+            $totaleDaSottrarre = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
+            $dbh->removeFromCart($idOrdine[0]["IdOrdine"], $idprodotto);
+            $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
+        } else{
+            $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
 
+            //Aggiorna totale ordine
+            $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
+            $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
+        }
         header("location: carrello.php");
     }
 }
