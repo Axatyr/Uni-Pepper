@@ -122,8 +122,22 @@
                 <input type="hidden" name="idOrdine" value="<?php echo $currentCart[0]["IdOrdine"];?>" />
                 <input type="hidden" name="action" value="11"/>
                 <!-- Procedi al pagamento -->
-                <button type="submit" onclick="document.getElementById('pagamento-avvenuto').style.display='block'" class="btn" >Procedi all'acquisto</button>
-                </form> 
+                <button type="button" onclick="document.getElementById('pagamento').style.display='block'" class="btn" >Procedi all'acquisto</button>
+
+                <!-- The Modal (Contiene Pagamento avvenuto) -->
+                <div id="pagamento" class="modal">
+                  <div class="container-pay" >
+                    <h1>Pagamento avvenuto con successo</h1>                  
+                    <div>
+                      <button type="submit" onclick="setTimeout(spedito, 5000);" class="btn btn-success">Continua</button>
+                    </div>
+                  </div>
+                  <script>
+                    // Get the modal
+                    var modal = document.getElementById('pagamento');
+                  </script>
+                </div>
+              </form> 
             </div>
         </div>
             

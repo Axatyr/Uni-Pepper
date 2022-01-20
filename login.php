@@ -19,6 +19,16 @@ if(isUserLoggedIn()){
     }
     elseif($_SESSION["tipo"]=='f'){
         $templateParams["nome"] = "login-home-fornitore.php";
+        
+        //Controllo merce esaurimento
+        $prodottiInEsaurimento= $dbh->getProdottiInEsaurimentoByIdFornitore($_SESSION["idutente"]);
+        if(count($prodottiInEsaurimento)!= 0){
+            //Inserire notifica
+                foreach($prodottiInEsaurimento as $prodotto):
+                $testo = "Sono rimaste solo ".$prodotto["QuantitaProdotto"]." unità del prodotto ".$prodotto["NomeProdotto"]; 
+                $dbh->insertNotifica($testo, $_SESSION["idutente"]);
+                endforeach;
+        }
     }    
     if(isset($_GET["formmsg"])){
         $templateParams["formmsg"] = $_GET["formmsg"];

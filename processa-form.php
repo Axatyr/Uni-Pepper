@@ -154,8 +154,13 @@ if($_POST["action"]==10){
 if($_POST["action"]==11) {
     $idOrdine = htmlspecialchars($_POST["idOrdine"]);
     $stato = "Ordine effettuato";
+    $utente = $_SESSION["idutente"];
 
     $dbh->updateStato($idOrdine, $stato);
+
+    //Inserire notifica
+    $testo = "Ordine ".$idOrdine." ".$stato; 
+    $dbh->insertNotifica($testo, $utente);
 
     header("location: carrello.php");
 }

@@ -214,6 +214,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProdottiInEsaurimentoByIdFornitore($id){
+        $query = "SELECT NomeProdotto, QuantitaProdotto FROM prodotti WHERE IdFornitore=? AND QuantitaProdotto<= 5";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function moveToPreferiti($idprodotto, $utente){
         $query = "INSERT INTO preferiti (IdUtente, IdProdotto) VALUES (?,?)";
         $stmt = $this->db->prepare($query);
@@ -328,5 +338,25 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getNotifiche($utente) {
+        $query = "SELECT IdNotifica, Testo FROM notifiche WHERE IdUtente = ? ORDER BY IdNotifica DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i',$utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertNotifica($testo, $utente){
+        $query = "INSERT INTO notifiche (Testo, IdUtente) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $testo, $utente);
+        $stmt->execute();
+        
+        return $stmt->insert_id;
+    }
+
 }
 ?>

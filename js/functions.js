@@ -14,7 +14,6 @@ function ReadMore() {
     }
   }
 
-
 function redirectPepper(domanda, ris){
     
     //Funzione per id domanda
@@ -162,87 +161,6 @@ function reset(){
     location.reload(true);
 }
 
-let elements = getCookie("elements");
-
-function addCart(idProd, quantita){
-    if(elements == 0){
-        elements ++;
-    }
-    let present = 0;
-    //deleteAllCookie();
-    if(quantita == 0){
-        quantita = document.getElementById("quantitaInput").value;
-    }
-
-    for(i=1; i<elements; i++){
-        let temp = getCookie("prodottoCarrello"+i);
-        if(temp == idProd){
-            let tempvalue = getCookie("quantitaProdCarrello"+i);
-            tempvalue = parseFloat(tempvalue) + parseFloat(quantita); 
-            document.cookie = "quantitaProdCarrello"+i+"="+tempvalue;
-            present=1;
-        }
-    }
-    
-    if(present == 0){ 
-        document.cookie = "elements=" + elements;
-        document.cookie = "prodottoCarrello" + elements + "=" + idProd;
-        document.cookie = "quantitaProdCarrello" + elements + "=" + quantita;
-        elements++;
-    }
-
-}
-
-let favElem= getCookie("favElem");
-
-function addFavourite(idProd){
-    let present = 0;
-    if(favElem == 0){
-        favElem ++;
-    }
-
-    for(i=1; i<favElem; i++){
-        let temp = getCookie("prodottoPreferiti"+i);
-        if(temp == idProd){
-            present = 1;
-        }
-    }
-
-    if(present == 0){
-        document.cookie = "prodottoPreferiti" + favElem + "=" + idProd;
-        favElem++;
-    }
-}
-
-function deleteProductFromFavourite(){
-    for(i=1; i<favElem; i++){
-        let temp = getCookie("prodottoPreferiti"+i);
-        if(temp == idProd){
-            document.cookie = "prodottoPreferiti" + i + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    }
-    favElem --;
-    document.cookie = "favElem=" + favElem;
-
-    location.reload(true);
-}
-
-function deleteProductFromCart(idProd){
-    for(i=1; i<elements; i++){
-        let temp = getCookie("prodottoCarrello"+i);
-        if(temp == idProd){
-            document.cookie = "prodottoCarrello" + i + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "quantitaProdCarrello" + i + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    }
-    elements --;
-    document.cookie = "elements=" + elements;
-
-    location.reload(true);
-}
-
-
-
 function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
@@ -258,14 +176,6 @@ function getCookie(cname) {
     return "";
 }
 
-// Non usata da modificare
-function deleteCookieCarrello(){
-    let name = "prodotto";
-    for(i=0; i<5; i++){
-        document.cookie = name + i +"=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
-
 // Non usata
 function deleteAllCookie(){
     var cookies = document.cookie.split(";");
@@ -277,3 +187,19 @@ function deleteAllCookie(){
     }
 }
 
+/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginRight = "250px";
+  }
+  
+  /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginRight = "0";
+}
+
+function spedito(){
+    console.log("ccc");
+    alert('Hai una nuova notifica!');
+}
