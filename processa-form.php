@@ -18,13 +18,7 @@ if($_POST["action"]==1){
         $tipo = "c";
     }
     $id = $dbh->inserisciUtente($nome, $cognome, $mail, $password, $tipo);
-    if($id!=false){
-        $msg = "Registrazione avvenuta con successo!";
-    }
-    else{
-        $msg = "Errore, registrazione non avvenuta!";
-    }
-    header("location: login.php?formmsg=".$msg);
+    header("location: login.php");
 }
 /*Aggiunta prodotto*/
 if($_POST["action"]==2){
@@ -38,14 +32,8 @@ if($_POST["action"]==2){
     if($result != 0){
         $imgprodotto = $msg;
         $id = $dbh->inserisciProdotto($nomeprodotto, $imgprodotto, $prezzo, $descrizioneprodotto, $quantita, $fornitore, $fornitore);
-        if($id!=false){
-            $msg = "Inserimento avvenuto correttamente!";
-        }
-        else{
-            $msg = "Errore in inserimento!";
-        }
     }
-    header("location: gestione-prodotti.php?formmsg=".$msg);
+    header("location: gestione-prodotti.php");
 }
 /*Rifornimento prodotto*/
 if($_POST["action"]==3){
@@ -54,7 +42,7 @@ if($_POST["action"]==3){
     $idprodotto = htmlspecialchars($_POST["idprodotto"]);
 
     $dbh->rifornisciProdotto($idprodotto, $quantita);
-    header("location: gestione-prodotti.php?formmsg=".$msg);
+    header("location: gestione-prodotti.php");
 }
 /*Rimuovi dai preferiti*/
 if($_POST["action"]==4){
@@ -63,23 +51,22 @@ if($_POST["action"]==4){
 
     $dbh->removeFromPreferiti($idprodotto, $utente);
 
-    header("location: preferiti.php?formmsg=".$msg);
+    header("location: preferiti.php");
 }
-/*Aggiungi a preferiti*/
 /*Aggiungi a preferiti*/
 if($_POST["action"]==5||$_POST["action"]==6){
     $idprodotto = htmlspecialchars($_POST["idprodotto"]);
     $utente = $_SESSION["idutente"];
 
     $res = $dbh->checkProductInPreferiti($idprodotto, $utente);
-    if(count($res)!=0){
+    if(count($res)==0){
         $dbh->moveToPreferiti($idprodotto, $utente);
     }
     if($_POST["action"]==5){
-        header("location: index.php?formmsg=".$msg);
+        header("location: index.php");
     }
     else{
-        header("location: carrello.php?formmsg=".$msg);
+        header("location: carrello.php");
     }
 }
 
@@ -99,27 +86,28 @@ if($_POST["action"]==7 || $_POST["action"]==8){
     if(count($idOrdine) == 0){
         $dbh->createNewCart($idOrdine, $utente);
     }
-    //Aggiungi prodotto
-    $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
-    if(count($quantitaProdotto) == 0){
-        $dbh->createNewProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto, $quantita);
-    }
-    else {
-        $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
-        $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
-    }
+    else{
+        //Aggiungi prodotto
+        $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
+        if(count($quantitaProdotto) == 0){
+            $dbh->createNewProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto, $quantita);
+        }
+        else {
+            $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
+            $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
+        }
 
-    //Aggiorna totale ordine
-    $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
-    $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
-    $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
-
+        //Aggiorna totale ordine
+        $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
+        $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
+        $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
+    }
     //Da andare nella home o prodotto o preferiti
     if($_POST["action"]==7) { 
-        header("location: index.php?formmsg=".$msg);
+        header("location: index.php");
     } else if($_POST["action"]==8) {
-        header("location: preferiti.php?formmsg=".$msg);
-    } 
+        header("location: preferiti.php");
+    }     
 }
 
 /*Rimuovi dal carrello*/
@@ -137,7 +125,7 @@ if($_POST["action"]==9){
     $dbh->removeFromCart($idOrdine[0]["IdOrdine"], $idprodotto);
     $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
 
-    header("location: carrello.php?formmsg=".$msg);
+    header("location: carrello.php");
 }
 
 /*Aggiorna carrello*/
@@ -160,7 +148,7 @@ if($_POST["action"]==10 || $_POST["action"]==11){
         $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
         $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
 
-        header("location: carrello.php?formmsg=".$msg);
+        header("location: carrello.php");
     }
 }
 

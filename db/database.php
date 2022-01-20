@@ -123,9 +123,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     public function getOrdini($id){
-        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto FROM ordini, utenti, ordiniprodotti, prodotti WHERE ordini.IdUtente = ? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto GROUP BY ordiniprodotti.IdOrdine";
+        $statoCarrello = "Carrello";
+        $query = "SELECT ordini.IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, ImmagineProdotto, NomeProdotto FROM ordini, utenti, ordiniprodotti, prodotti WHERE ordini.IdUtente = ? AND ordini.IdOrdine = ordiniprodotti.IdOrdine AND ordiniprodotti.IdProdotto = prodotti.IdProdotto AND StatoOrdine != ? GROUP BY ordiniprodotti.IdOrdine";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $id);
+        $stmt->bind_param('is', $id, $statoCarrello);
         $stmt->execute();
         $result = $stmt->get_result();
 
