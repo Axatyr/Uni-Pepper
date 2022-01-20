@@ -140,13 +140,13 @@ if($_POST["action"]==10){
         $quantitaProdotto = $dbh->checkProductOnCart($idOrdine[0]["IdOrdine"], $idprodotto);
         $quantitaProdotto[0]["QuantitaPr"] = $quantitaProdotto[0]["QuantitaPr"] + $quantita;
         $prezzoProdotto= $dbh->getPriceProduct($idprodotto);
+        //Controllo che la quantita non sia scesa a 0, in tal caso elimino l'elemento
         if($quantitaProdotto[0]["QuantitaPr"] == 0) {
             $totaleDaSottrarre = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
             $dbh->removeFromCart($idOrdine[0]["IdOrdine"], $idprodotto);
             $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totaleDaSottrarre);
         } else{
             $dbh->setQuantityProduct($idOrdine[0]["IdOrdine"], $idprodotto, $quantitaProdotto[0]["QuantitaPr"]);
-
             //Aggiorna totale ordine
             $totale = $prezzoProdotto[0]["PrezzoProdotto"] * $quantita;
             $dbh->updateTotalCart($idOrdine[0]["IdOrdine"], $totale);
@@ -168,9 +168,4 @@ if($_POST["action"]==11) {
 
     header("location: carrello.php");
 }
-
-//Trasferimento ad ordini da carrello bisogna aggionare anche i valori inseriti nel form
-
-// Al logout bisogna fare un controllo, se il carrello ha 0 elementi, viene eliminato
-
 ?>
