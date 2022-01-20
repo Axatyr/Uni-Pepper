@@ -31,6 +31,7 @@
         <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" alt="Utente"></span></a>
     </nav>        
     <main>
+
         <?php if(isset($templateParams["nome"])){
         require($templateParams["nome"]);
         }

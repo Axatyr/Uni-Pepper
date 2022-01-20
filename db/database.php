@@ -241,13 +241,13 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function createNewCart($idOrdine, $utente){
+    public function createNewCart($utente){
         $statoCarrello = "Carrello";
         $totaleCarrello = 0;
         $dataCorrente = date("Y-m-d");
-        $query = "INSERT INTO ordini (IdOrdine, DataOrdine, StatoOrdine, TotalePrezzo, IdUtente) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO ordini (DataOrdine, StatoOrdine, TotalePrezzo, IdUtente) VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('issdi', $idOrdine, $dataCorrente, $statoCarrello, $totaleCarrello, $utente);
+        $stmt->bind_param('ssdi', $dataCorrente, $statoCarrello, $totaleCarrello, $utente);
         $stmt->execute();
         
         return $stmt->insert_id;
