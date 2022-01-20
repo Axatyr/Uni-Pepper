@@ -38,6 +38,11 @@
             <?php endforeach; }?>
     </div>
     <main>
+        <!-- Controllo notifiche presenti -->
+        <?php if($templateParams["notifica"] != null){ ?>
+        <script>getNotifica();</script>
+        <?php } ?>
+
         <?php if(isset($templateParams["nome"])){
         require($templateParams["nome"]);
         }

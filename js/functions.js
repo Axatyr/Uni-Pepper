@@ -199,7 +199,10 @@ function closeNav() {
     document.getElementById("main").style.marginRight = "0";
 }
 
-function spedito(){
-    console.log("ccc");
+function getNotifica(){
+    setTimeout(nuovaNotifica, 1000);
+}
+
+function nuovaNotifica(){
     alert('Hai una nuova notifica!');
 }

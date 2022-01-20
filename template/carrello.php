@@ -129,7 +129,7 @@
                   <div class="container-pay" >
                     <h1>Pagamento avvenuto con successo</h1>                  
                     <div>
-                      <button type="submit" onclick="setTimeout(spedito, 5000);" class="btn btn-success">Continua</button>
+                      <button type="submit" class="btn btn-success">Continua</button>
                     </div>
                   </div>
                   <script>
@@ -139,8 +139,7 @@
                 </div>
               </form> 
             </div>
-        </div>
-            
+        </div>     
     </div>
     <?php } ?>
 

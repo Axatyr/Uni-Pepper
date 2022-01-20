@@ -357,6 +357,5 @@ class DatabaseHelper{
         
         return $stmt->insert_id;
     }
-
 }
 ?>
