@@ -20,7 +20,7 @@
         <section>
             <h2>Descrizione prodotti:</h2>
             <?php foreach($templateParams["varieta"] as $varieta): ?>
-            <div class="varieta">
+            <div class="varieta" id="<?php echo $varieta["IdVarieta"];?>">
                 <div>
                     <img src="<?php echo UPLOAD_DIR_VARIETY.$varieta["ImmagineVarieta"]; ?>" alt="Immagine <?php echo $varieta["NomeVarieta"]; ?>" />
                 </div>

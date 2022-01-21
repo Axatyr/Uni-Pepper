@@ -340,7 +340,7 @@ class DatabaseHelper{
     }
 
     public function getNotifiche($utente) {
-        $query = "SELECT IdNotifica, Testo FROM notifiche WHERE IdUtente = ? ORDER BY IdNotifica DESC";
+        $query = "SELECT IdNotifica, Testo, StatoNotifica FROM notifiche WHERE IdUtente = ? ORDER BY IdNotifica";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i',$utente);
         $stmt->execute();
@@ -350,12 +350,28 @@ class DatabaseHelper{
     }
 
     public function insertNotifica($testo, $utente){
-        $query = "INSERT INTO notifiche (Testo, IdUtente) VALUES (?, ?)";
+        $stato = 0;
+        $query = "INSERT INTO notifiche (Testo, IdUtente, StatoNotifica) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('si', $testo, $utente);
+        $stmt->bind_param('sii', $testo, $utente, $stato);
         $stmt->execute();
         
         return $stmt->insert_id;
+    }
+
+    public function deleteNotifica($idnotifica){
+        $query = "DELETE FROM notifiche WHERE IdNotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idnotifica);
+        $stmt->execute();
+    }
+
+    public function updateStatoNotifica($IdNotifica){
+        $letto = 1;
+        $query = "UPDATE notifiche SET StatoNotifica = ? WHERE IdNotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $letto, $IdNotifica);
+        $stmt->execute();
     }
 }
 ?>

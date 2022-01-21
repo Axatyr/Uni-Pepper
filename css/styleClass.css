@@ -6,6 +6,33 @@ nav a.icon {
     float: right;
     display: block;
 }
+.topnav.responsive {
+    position: relative;
+}
+.topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.topnav.responsive a.right {
+    float: right;
+    display: block;
+    text-align: center;
+    width: auto;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    width: 25%;
+}
+
+/*Notifiche*/
+.container-notifica button{
+    background-color: transparent;
+    float: right;
+    border: none;
+    cursor: pointer;
+}
 
 /*assistente*/
 .assistente {
@@ -248,7 +275,27 @@ hr {
     cursor: pointer;
     color: #f1f1f1;
 }
-  
+/*Modal pagamento*/
+.modal-pay {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+.container-pay{
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+    padding: 5%;
+    text-align: center;
+}
 
 
 /* Gestione immagini con overlay area utente*/
@@ -324,17 +371,18 @@ hr {
     margin-bottom: 5%;
     border-radius: 8px;
 }
-  
+.product form{
+   display: inline-block;
+   width: 45%;
+}
 .product button {
     border: none;
-    display: inline-block;
     outline: 0;
     padding: 12px;
     color: white;
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 45%;
     font-size: 18px;
     margin-bottom: 2%;
 }

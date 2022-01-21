@@ -125,7 +125,7 @@
                 <button type="button" onclick="document.getElementById('pagamento').style.display='block'" class="btn" >Procedi all'acquisto</button>
 
                 <!-- The Modal (Contiene Pagamento avvenuto) -->
-                <div id="pagamento" class="modal">
+                <div id="pagamento" class="modal-pay">
                   <div class="container-pay" >
                     <h1>Pagamento avvenuto con successo</h1>                  
                     <div>

@@ -14,6 +14,7 @@ if(isset($_POST["mail"]) && isset($_POST["password"])){
 }
 if(isUserLoggedIn()){
     $templateParams["titolo"] = "Uni-Pepper's - Area personale";
+    $templateParams["notifica"] = $dbh->getNotifiche($_SESSION["idutente"]);
     if($_SESSION["tipo"]=='c'){
         $templateParams["nome"] = "login-home-cliente.php";
     }
@@ -38,6 +39,7 @@ else{
     $templateParams["titolo"] = "Uni-Pepper's - Login";
     $templateParams["nome"] = "login-form.php";
 }
+$templateParams["pagina"] = "login.php";
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
 
 require 'template/base.php';

@@ -18,30 +18,51 @@
     <header>
         <img src="upload/logo.png" alt="logo"/>
     </header>
-    <nav>
+    <nav class="topnav" id="myTopnav">
         <a href="index.php" <?php isActive("index.php");?>>Home</a>
         <a href="ricette.php" <?php isActive("ricette.php");?>>Ricette</a>
         <a href="varieta.php" <?php isActive("varieta.php");?>>Variet&agrave;</a>
         <a href="assistente.php" <?php isActive("assistente.php");?>>Assistente</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><span class="fas fa-bars"></span></a> 
+        <a href="#" class="icon" onclick="resize()"><span class="fas fa-bars"></span></a> 
         <a id="main" onclick="openNav()" class="right"><span class="fas fa-bell" alt="Notifiche"></span></a>
         <a href="preferiti.php" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" alt="Preferiti"></span></a>
         <a href="carrello.php" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
         <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" alt="Utente"></span></a>
     </nav>    
+    <script>
+        function resize() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
     <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>          
+        
             <?php if(isset($_SESSION["idutente"])) { foreach($templateParams["notifica"] as $notifica): ?>
                 <div class="container-notifica">
+                    <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="idnotifica" value="<?php echo $notifica["IdNotifica"];?>"/>
+                        <input type="hidden" name="action" value="12"/>
+                        <input type="hidden" name="page" value="<?php echo $templateParams["pagina"];?>">
+                        <button type="submit"><span class="fas fa-trash"></span></button>
+                    </form>
                     <p><?php echo $notifica["Testo"];?></p>
                 </div>
             <?php endforeach; }?>
     </div>
     <main>
-        <!-- Controllo notifiche presenti -->
-        <?php if($templateParams["notifica"] != null){ ?>
-        <script>getNotifica();</script>
-        <?php } ?>
+        <!-- Controllo notifiche presenti-->
+        <?php if($templateParams["notifica"]!= null):
+            foreach($templateParams["notifica"] as $notifica):
+                if($notifica["StatoNotifica"] == 0): ?>
+                    <script>getNotifica();</script>
+        <?php   endif;
+            endforeach;
+        endif; ?>
 
         <?php if(isset($templateParams["nome"])){
         require($templateParams["nome"]);

@@ -13,5 +13,5 @@
         <div class="overlay"><a href="preferiti.php">Preferiti</a></div>
     </div>
 </div>        
-<button type="button" class="logout"><a href="logout.php">Logout</a></button>
+<a href="logout.php"><button type="button" class="logout">Logout</button></a>
     

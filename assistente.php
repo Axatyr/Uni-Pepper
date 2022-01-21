@@ -5,7 +5,11 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Uni-Pepper's - Assistente";
 $templateParams["titolo_pagina"] = "Assistente";
 $templateParams["nome"] = "assistente.php";
+$templateParams["pagina"] = "assistente.php";
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
+if(isset($_SESSION["idutente"])){
+    $templateParams["notifica"] = $dbh->getNotifiche($_SESSION["idutente"]);
+}
 
 //Assistente Template
 $iddomanda = 1;

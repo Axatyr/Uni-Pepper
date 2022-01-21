@@ -6,5 +6,5 @@
     <p>Cognome: <?php echo $utente["Cognome"]; ?></p></p>
     <p>E-mail: <?php echo $utente["Mail"]; ?></p></p>
 </div>
-<button type="button" class="logout"><a href="logout.php">Logout</a></button>
+<a href="logout.php"><button type="button" class="logout">Logout</button></a>
     

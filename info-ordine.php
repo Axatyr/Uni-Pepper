@@ -4,7 +4,11 @@ require_once 'bootstrap.php';
 //Base Template
 $templateParams["titolo"] = "Uni-Pepper's - Info ordine";
 $templateParams["nome"] = "info-ordine.php";
+$templateParams["pagina"] = "info-ordine.php";
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
+if(isset($_SESSION["idutente"])){
+    $templateParams["notifica"] = $dbh->getNotifiche($_SESSION["idutente"]);
+}
 //Home Template
 $idordine = -1;
 if(isset($_GET["id"])){

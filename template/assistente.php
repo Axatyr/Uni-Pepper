@@ -29,7 +29,7 @@
         <h2><?php echo $idvar["NomeVarieta"];?></h2>
             <p><?php echo $idvar["DescrizioneVarieta"];?></p>
                 <!-- Redirect alla pagina da fare-->
-            <button  id="readMoreBtn">Ulteriori Info</button>
+            <a href="varieta.php#<?php echo $idvar["IdVarieta"];?>"><button  id="readMoreBtn">Ulteriori Info</button></a>
         </div>
     </section> 
     <?php }?>

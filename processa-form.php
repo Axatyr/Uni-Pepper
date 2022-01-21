@@ -168,6 +168,13 @@ if($_POST["action"]==11) {
 
     header("location: carrello.php");
 }
+/*cancella notifica*/
+if($_POST["action"]==12){
+    $idnotifica = htmlspecialchars($_POST["idnotifica"]);
+    $dbh->deleteNotifica($idnotifica);
+    $page = htmlspecialchars($_POST["page"]);
+    header("location: $page");
+}
 
 /*
 function gestisciOrdine($idOrdine, $utente, $statoOrdine){
