@@ -71,10 +71,12 @@
               <h4>Totale <span class="prezzo" style="color:black"><?php echo number_format($currentCart[0]["TotalePrezzo"],2); ?> €</span></h4>
             </div>
         </div>
+        
         <!-- Inserisci i dati -->
         <div class="row">
             <div class="col-75">
               <div class="container">
+              <?php if(!isset($_SESSION["procediAlPagamento"])) {?>
                 <form action="processa-form.php" method="POST" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-50">
@@ -118,11 +120,19 @@
                       </div>
                     </div>
                 </div>
-
+                <input type="hidden" name="action" value="14"/>
+                    <button type="submit" class="btn btn-success">Verifica dati</button>
+              
+              </form>
+            <?php } else {?>
+            <section>
+              <p>Dati verificati</p>
+            </section>
+            <form action="processa-form.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="idOrdine" value="<?php echo $currentCart[0]["IdOrdine"];?>" />
                 <input type="hidden" name="action" value="11"/>
                 <!-- Procedi al pagamento -->
-                <button type="button" onclick="document.getElementById('pagamento').style.display='block'" class="btn" >Procedi all'acquisto</button>
+                  <button id="procedi" type="button" onclick="document.getElementById('pagamento').style.display='block'" class="btn">Procedi all'acquisto</button>
 
                 <!-- The Modal (Contiene Pagamento avvenuto) -->
                 <div id="pagamento" class="modal-pay">
@@ -132,12 +142,13 @@
                       <button type="submit" class="btn btn-success">Continua</button>
                     </div>
                   </div>
-                  <script>
+                  <script> 
                     // Get the modal
                     var modal = document.getElementById('pagamento');
                   </script>
                 </div>
-              </form> 
+            </form> 
+            <?php } unset($_SESSION["procediAlPagamento"]);?>
             </div>
         </div>     
     </div>

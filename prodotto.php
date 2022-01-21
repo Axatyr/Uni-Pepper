@@ -4,7 +4,7 @@ require_once 'bootstrap.php';
 //Base Template
 $templateParams["titolo"] = "Uni-Pepper's - Prodotto";
 $templateParams["nome"] = "singolo-prodotto.php";
-$templateParams["pagina"] = "prodotto.php";
+
 $templateParams["ricettecasuali"] = $dbh->getRandomRecipe(1);
 if(isset($_SESSION["idutente"])){
     $templateParams["notifica"] = $dbh->getNotifiche($_SESSION["idutente"]);
@@ -15,6 +15,7 @@ $idprodotto = -1;
 if(isset($_GET["id"])){
     $idprodotto = $_GET["id"];
 }
+$templateParams["pagina"] = "prodotto.php?id=".$idprodotto;
 $templateParams["prodotto"] = $dbh->getProductById($idprodotto);
 
 

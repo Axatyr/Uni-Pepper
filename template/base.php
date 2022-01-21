@@ -40,8 +40,12 @@
         }
     </script>
     <div id="mySidebar" class="sidebar">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>          
-        
+        <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="page" value="<?php echo $templateParams["pagina"];?>">
+            <input type="hidden" name="action" value="13" />
+            <button href="javascript:void(0)" type="submit" class="closebtn" onclick="closeNav()">&times;</button>     
+        </form>
+            
             <?php if(isset($_SESSION["idutente"])) { foreach($templateParams["notifica"] as $notifica): ?>
                 <div class="container-notifica">
                     <form action="processa-form.php" method="POST" enctype="multipart/form-data">
@@ -56,7 +60,7 @@
     </div>
     <main>
         <!-- Controllo notifiche presenti-->
-        <?php if($templateParams["notifica"]!= null):
+        <?php if($templateParams["notifica"]!= 0):
             foreach($templateParams["notifica"] as $notifica):
                 if($notifica["StatoNotifica"] == 0): ?>
                     <script>getNotifica();</script>

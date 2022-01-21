@@ -176,6 +176,20 @@ if($_POST["action"]==12){
     header("location: $page");
 }
 
+/*Aggiorna stato notifica*/
+if($_POST["action"]==13){
+    $utente = $_SESSION["idutente"];
+    $dbh->updateStatoNotifiche($utente);
+
+    $page = htmlspecialchars($_POST["page"]);
+    header("location: $page");
+}
+
+if($_POST["action"]==14) {
+    $_SESSION["procediAlPagamento"]=1;
+    header("location: carrello.php");
+}
+
 /*
 function gestisciOrdine($idOrdine, $utente, $statoOrdine){
     if($statoOrdine == 1){

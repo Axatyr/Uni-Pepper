@@ -366,11 +366,11 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
-    public function updateStatoNotifica($IdNotifica){
+    public function updateStatoNotifiche($utente){
         $letto = 1;
-        $query = "UPDATE notifiche SET StatoNotifica = ? WHERE IdNotifica = ?";
+        $query = "UPDATE notifiche SET StatoNotifica = ? WHERE IdUtente = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $letto, $IdNotifica);
+        $stmt->bind_param('ii', $letto, $utente);
         $stmt->execute();
     }
 }
