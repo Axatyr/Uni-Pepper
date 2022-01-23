@@ -20,7 +20,7 @@
     </ul>
     <?php 
                         
-    if($ordine["StatoOrdine"]=="Ordine effettuato"): ?>
+    if($ordine["StatoOrdine"]=="Effettuato"): ?>
     <style>
         .effettuato{
             color: black;

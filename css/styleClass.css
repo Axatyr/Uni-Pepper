@@ -421,23 +421,27 @@ hr {
 }
 
 .info input{
-    max-width: 10%;
+    max-width: 30%;
     padding: 6px;
     border-radius: 8px;
-    margin-bottom: 2%;
+    margin-bottom: 4%;
+}
+
+.info form{
+    display: inline-block;
+    width: 40%;
 }
 
 .info button{
     border: none;
+    width: 70%;
     border-radius: 5px;
-    display: inline-block;
     outline: 0;
     padding: 12px;
     color: white;
     background-color: #000;
     text-align: center;
     cursor: pointer;
-    width: 15%;
     font-size: 18px;
     margin-bottom: 2%;
     margin-top: 0;
@@ -609,6 +613,18 @@ hr {
     }
     .info img{
         float: left;
+    }
+    .info input{
+        max-width: 30%;
+    }
+    
+    .info form{
+        display: inline-block;
+        width: 20%;
+    }
+    
+    .info button{
+        width: 70%;
     }
     .order, .order1{
         width: 80%;
