@@ -6,5 +6,5 @@ define("UPLOAD_DIR_RECIPES", "./upload/recipes/");
 define("UPLOAD_DIR_USER", "./upload/user/");
 require_once("utils/functions.php");
 require_once("db/database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "unipeppers", 3307);
+$dbh = new DatabaseHelper("localhost", "root", "", "unipeppers", 3306);
 ?>

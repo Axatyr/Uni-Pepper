@@ -4,9 +4,9 @@
 <?php endif; ?>
 <form action="#" method="post" class="login"> 
     <label for="mail"><b>E-mail: </b></label>
-    <input type="text" placeholder="Inserisci E-mail" name="mail" required>    
+    <input type="text" placeholder="Inserisci E-mail" id="mail" name="mail" required>    
     <label for="password"><b>Password: </b></label>
-    <input type="password" placeholder="Inserisci Password" name="password" required>
+    <input type="password" placeholder="Inserisci Password" id="password" name="password" required>
                 
     <button type="submit">Accedi</button>
     <p><span>oppure</span></p>
@@ -20,16 +20,16 @@
             <p>Completa i seguenti campi per creare un account.</p>
             <hr>
             <label for="email"><b>Email</b></label>
-            <input type="email" placeholder="Inserisci E-mail" name="email" required/>
+            <input type="email" placeholder="Inserisci E-mail" id="email" name="email" required/>
             
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Inserisci Password" name="password" required/>
+            <input type="password" placeholder="Inserisci Password" id="psw" name="password" required/>
                 
             <label for="nome"><b>Nome</b></label>
-            <input type="text" placeholder="Inserisci Nome" name="nome" required/>
+            <input type="text" placeholder="Inserisci Nome" id="nome" name="nome" required/>
                         
             <label for="cognome"><b>Cognome</b></label>
-            <input type="text" placeholder="Inserisci Cognome" name="cognome" required/>
+            <input type="text" placeholder="Inserisci Cognome" id="cognome" name="cognome" required/>
 
             <input type="checkbox" class="form-check-input" id="tipo" name="tipo">
             <label class="form-check-label" for="tipo">Fornitore</label>                   

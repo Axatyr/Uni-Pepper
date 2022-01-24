@@ -8,10 +8,10 @@
     <p>Quantità: <?php echo $prodotto["QuantitaProdotto"]; ?></p>
     <p class="rifornisci"><span>Rifornisci</span></p> 
     <form action="processa-form.php" method="POST" enctype="multipart/form-data">
-        <input type="number" id="disponibilita" name="disponibilita" min="1" value="1"/>
-        <input type="hidden" name="idprodotto" id="idprodotto" value="<?php echo $prodotto["IdProdotto"]; ?>" />                       
-        <input type="hidden" name="action" id="action" value="3" />
-        <button type="submit" style="width: 100%; margin-bottom: 0;">Invio</span></button>
+        <input type="number" name="disponibilita" min="1" value="1"/>
+        <input type="hidden" name="idprodotto" value="<?php echo $prodotto["IdProdotto"]; ?>" />                       
+        <input type="hidden" name="action" value="3" />
+        <button type="submit" style="width: 100%; margin-bottom: 0;">Invio</button>
     </form>
 </div>
 <?php endforeach; ?>
@@ -23,16 +23,16 @@
             <h1>Aggiunta prodotto</h1>
             <p>Completa i seguenti campi per aggiungere un nuovo prodotto.</p>
             <hr>
-            <label for="nome"><b>Nome</b></label>
-            <input type="text" placeholder="Inserisci Nome Prodotto" name="nome" required>
+            <label for="nome"><span>Nome:</span></label>
+            <input type="text" placeholder="Inserisci Nome Prodotto" id="nome" name="nome" required>
             
-            <label for="prezzo"><b>Prezzo</b></label>
-            <input type="text" placeholder="Inserisci Prezzo" name="prezzo" required>
+            <label for="prezzo"><span>Prezzo:</span></label>
+            <input type="text" placeholder="Inserisci Prezzo" id="prezzo" name="prezzo" required>
             
-            <label for="immagine"><b>Immagine prodotto:</b></label>
+            <label for="immagine"><span>Immagine prodotto:</span></label>
             <input type="file" name="immagine" id="immagine" required/>
                         
-            <label for="descrizione"><b>Descrizione:</b></label>
+            <label for="descrizione"><span>Descrizione:</span></label>
             <br>
             <textarea class="form-control" name="descrizione" id="descrizione" required></textarea>
             <br>

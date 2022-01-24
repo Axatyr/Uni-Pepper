@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <table>
               <thead>
                   <tr>
-                    <th id="img"></th><th id="articolo">Articolo</th></th><th id="prezzo">Prezzo</th><th id="quantita">Quantit&agrave;</th><th id="button"></th>
+                    <th id="img"></th><th id="articolo">Articolo</th><th id="prezzo">Prezzo</th><th id="quantita">Quantit&agrave;</th><th id="button"></th>
                   </tr>
               </thead>
               <tbody>
@@ -122,23 +122,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           
                     <div class="col-50">
                       <h3>Metodo di Pagamento</h3>
-                      <label for="fname">Carte valide</label>
+                      <label>Carte valide</label>
                       <div class="icon-container">
                         <span class="fab fa-cc-visa" style="color:navy;"></span>
                         <span class="fab fa-cc-amex" style="color:blue;"></span>
                         <span class="fab fa-cc-mastercard" style="color:red;"></span>
                       </div>
-                      <label for="cname">Titolare carta</label>
+                      <label for="titolare">Titolare carta</label>
                       <input type="text" id="titolare" name="titolare" placeholder="Mario Rossi" required>
                       <span class="error"> <?php echo $titolareError;?></span>
-                      <label for="ccnum">Numero carta</label>
+                      <label for="numero">Numero carta</label>
                       <input type="text" id="numero" name="numero" placeholder="1111-2222-3333-4444" required>
                       <span class="error"> <?php echo $cartaError;?></span>
-                      <label for="expmonth">Mese di scadenza</label>
+                      <label for="scadenzam">Mese di scadenza</label>
                       <input type="text" id="scadenzam" name="scadenzam" placeholder="Settembre" required>
                       <div class="row">
                         <div class="col-50">
-                          <label for="expyear">Anno di scadenza</label>
+                          <label for="scadenzaa">Anno di scadenza</label>
                           <input type="text" id="scadenzaa" name="scadenzaa" placeholder="2022" required>
                           <span class="error"> <?php echo $annoError;?></span>
                         </div>

@@ -12,11 +12,11 @@
         <li>Totale: <?php echo number_format($ordine["TotalePrezzo"], 2); ?> €</li>
         <li>Stato: <?php echo $ordine["StatoOrdine"]; ?></li>
         <li>Prodotti ordinati:</li>
-        <ul>
+        <li><ul>
         <?php foreach($templateParams["prodottiordine"] as $prodotto): ?>
             <li><?php echo $prodotto["NomeProdotto"]; ?></li>
         <?php endforeach; ?>
-        </ul>
+        </ul></li>
     </ul>
     <?php 
                         
