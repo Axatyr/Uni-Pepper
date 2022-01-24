@@ -26,11 +26,11 @@
                 </div>
                 <div>
                     <h2><?php echo $varieta["NomeVarieta"];?></h2>
-                        <div class="progress piccantezza" style="width: <?php echo $varieta["Piccantezza"];?>0%""></div>
+                        <div class="progress piccantezza" style="width: <?php echo $varieta["Piccantezza"];?>0%"></div>
                         <p>Piccantezza: <?php echo $varieta["Piccantezza"];?></p>
-                        <div class="progress gusto" style="width: <?php echo $varieta["Gusto"];?>0%""></div>
+                        <div class="progress gusto" style="width: <?php echo $varieta["Gusto"];?>0%"></div>
                         <p>Gusto: <?php echo $varieta["Gusto"];?></p>
-                        <div class="progress estetica" style="width: <?php echo $varieta["Estetica"];?>0%""></div>
+                        <div class="progress estetica" style="width: <?php echo $varieta["Estetica"];?>0%"></div>
                         <p>Estetica: <?php echo $varieta["Estetica"];?></p> 
                 </div> 
                 <p><?php echo $varieta["DescrizioneVarieta"];?></p>

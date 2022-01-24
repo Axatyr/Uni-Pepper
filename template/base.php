@@ -23,11 +23,11 @@
         <a href="ricette.php" <?php isActive("ricette.php");?>>Ricette</a>
         <a href="varieta.php" <?php isActive("varieta.php");?>>Variet&agrave;</a>
         <a href="assistente.php" <?php isActive("assistente.php");?>>Assistente</a>
-        <a href="#" class="icon" onclick="resize()"><span class="fas fa-bars"></span></a> 
-        <a id="main" onclick="openNav()" class="right"><span class="fas fa-bell" alt="Notifiche"></span></a>
-        <a href="preferiti.php" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" alt="Preferiti"></span></a>
-        <a href="carrello.php" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" alt="Carrello"></span></a>
-        <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" alt="Utente"></span></a>
+        <a href="#" class="icon" onclick="resize()"><span class="fas fa-bars" title="Menu"></span></a> 
+        <a id="main" onclick="openNav()" class="right"><span class="fas fa-bell" title="Notifiche"></span></a>
+        <a href="preferiti.php" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" title="Preferiti"></span></a>
+        <a href="carrello.php" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" title="Carrello"></span></a>
+        <a href="login.php" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" title="Utente"></span></a>
     </nav>    
     <script>
         function resize() {
@@ -43,7 +43,7 @@
         <form action="processa-form.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="page" value="<?php echo $templateParams["pagina"];?>">
             <input type="hidden" name="action" value="13" />
-            <button href="javascript:void(0)" type="submit" class="closebtn" onclick="closeNav()">&times;</button>     
+            <button type="submit" class="closebtn" onclick="closeNav()">&times;</button>     
         </form>
             
             <?php if(isset($_SESSION["idutente"])) { foreach($templateParams["notifica"] as $notifica): ?>
@@ -95,9 +95,9 @@
     <footer>
         <section class="social">
             <p>Trovaci su:</p>
-            <a href="http://www.facebook.com"><span class="fab fa-facebook-f" alt="Facebook" style="color: #4267B2;"></span></a>
-            <a href="http://instagram.com"><span class="fab fa-instagram" alt="Instagram" style="color: orange;"></span></a>
-            <a href="http://twitter.com"><span class="fab fa-twitter" alt="Twitter" style="color: #1DA1F2;"></span></a>
+            <a href="http://www.facebook.com"><span class="fab fa-facebook-f" title="Facebook" style="color: #4267B2;"></span></a>
+            <a href="http://instagram.com"><span class="fab fa-instagram" title="Instagram" style="color: orange;"></span></a>
+            <a href="http://twitter.com"><span class="fab fa-twitter" title="Twitter" style="color: #1DA1F2;"></span></a>
         </section>
         <section class="contatti">
             <p>©2021 Uni-Pepper Tutti i Diritti Riservati</p>
@@ -106,9 +106,9 @@
         </section>
         <section class="pagamenti">
             <p>Pagamenti con:</p>
-            <a href="http://americanexpress.com"><span class="fab fa-cc-amex" alt="American Express" style="color: rgb(4, 4, 199);"></span></a>
-            <a href="http://visa.com"><span class="fab fa-cc-visa" alt="Visa" style="color: navy;"></span></a>
-            <a href="http://mastercard.com"><span class="fab fa-cc-mastercard" alt="Mastercard" style="color: red;"></span></a>
+            <a href="http://americanexpress.com"><span class="fab fa-cc-amex" title="American Express" style="color: rgb(4, 4, 199);"></span></a>
+            <a href="http://visa.com"><span class="fab fa-cc-visa" title="Visa" style="color: navy;"></span></a>
+            <a href="http://mastercard.com"><span class="fab fa-cc-mastercard" title="Mastercard" style="color: red;"></span></a>
         </section>
     </footer>
 </body>
