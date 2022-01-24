@@ -12,6 +12,12 @@
         <img src="upload/user/peperoncini.jpg" alt="preferiti" class="image">
         <div class="overlay"><a href="preferiti.php">Preferiti</a></div>
     </div>
+    <?php if($_SESSION["tipo"]=="f"): ?>
+        <div class="card">
+            <img src="upload/user/peperoncini.jpg" alt="preferiti" class="image">
+            <div class="overlay"><a href="gestione-prodotti.php">I miei prodotti</a></div>
+    </div>
+    <?php endif; ?>
 </div>        
 <a href="logout.php"><button type="button" class="logout">Logout</button></a>
     
