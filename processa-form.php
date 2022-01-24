@@ -185,11 +185,6 @@ if($_POST["action"]==13){
     header("location: $page");
 }
 
-if($_POST["action"]==14) {
-    $_SESSION["procediAlPagamento"]=1;
-    header("location: carrello.php");
-}
-
 /*
 function gestisciOrdine($idOrdine, $utente, $statoOrdine){
     if($statoOrdine == 1){
