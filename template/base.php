@@ -60,7 +60,7 @@
     </div>
     <main>
         <!-- Controllo notifiche presenti-->
-        <?php if($templateParams["notifica"]!= 0):
+        <?php if(isset($templateParams["notifica"]) && $templateParams["notifica"]!= 0):
             foreach($templateParams["notifica"] as $notifica):
                 if($notifica["StatoNotifica"] == 0): ?>
                     <script>getNotifica();</script>
