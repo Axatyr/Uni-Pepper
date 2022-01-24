@@ -185,32 +185,4 @@ if($_POST["action"]==13){
     header("location: $page");
 }
 
-/*
-function gestisciOrdine($idOrdine, $utente, $statoOrdine){
-    if($statoOrdine == 1){
-        //Invia notifica effettuato
-        $stato = "Effettuato";
-    } else if($statoOrdine == 2){
-        //Invia notifica spedito
-        $stato = "Spedito";
-    } else if($statoOrdine == 3){
-        //Invia notifica arrivato al campus
-        $stato = "Pronto per il ritiro";
-    } else if($statoOrdine == 4){
-        //Invia notifica ritirato
-        $stato = "Consegnato";
-    }
-
-    $testo = "Ordine ".$idOrdine." ".$stato; 
-    $dbh->insertNotifica($testo, $utente);
-    $dbh->updateStato($idOrdine, $stato);
-
-
-    sleep(5);
-    if($stato<5){
-        gestisciOrdine($idOrdine, $utente, $stato+1);
-    }
-    
-}
-*/
 ?>

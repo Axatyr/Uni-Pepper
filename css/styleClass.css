@@ -609,6 +609,7 @@ hr {
     .card{
         display: inline-block;
         margin-inline: 2%;
+        width: 20%;
     }
     .admin{
         text-align: center;
