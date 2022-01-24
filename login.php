@@ -15,12 +15,8 @@ if(isset($_POST["mail"]) && isset($_POST["password"])){
 if(isUserLoggedIn()){
     $templateParams["titolo"] = "Uni-Pepper's - Area personale";
     $templateParams["notifica"] = $dbh->getNotifiche($_SESSION["idutente"]);
-    if($_SESSION["tipo"]=='c'){
-        $templateParams["nome"] = "login-home-cliente.php";
-    }
-    elseif($_SESSION["tipo"]=='f'){
-        $templateParams["nome"] = "login-home-fornitore.php";
-        
+    $templateParams["nome"] = "login-home.php";
+    if($_SESSION["tipo"]=='f'){       
         //Controllo merce esaurimento
         $prodottiInEsaurimento= $dbh->getProdottiInEsaurimentoByIdFornitore($_SESSION["idutente"]);
         if(count($prodottiInEsaurimento)!= 0){
