@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <a><img src="<?php echo UPLOAD_DIR_VARIETY.$prodotto["ImmagineProdotto"]; ?>" alt="Immagine <?php echo $prodotto["NomeProdotto"];?>"/></a>
                       </td>
                       <td headers="articolo">
-                        <a href="prodotto.php?id="<?php echo $prodotto["IdProdotto"];?>><?php echo $prodotto["NomeProdotto"];?></a>
+                        <a href="prodotto.php?id=<?php echo $prodotto["IdProdotto"];?>"><?php echo $prodotto["NomeProdotto"];?></a>
                       </td>
                       <td headers="prezzo">
                         <p><?php echo number_format($prodotto["PrezzoProdotto"],2);?> €</p>
