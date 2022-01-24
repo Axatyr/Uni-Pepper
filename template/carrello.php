@@ -1,3 +1,28 @@
+<?php
+// define variables and set to empty values
+$titolareError = $capError = $cartaError = $cvvError = $annoError = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  if (!preg_match("/^[a-zA-Z-' ]*$/",$_POST["titolare"])) {
+    $titolareError = "Formato nome non corretto";
+  }
+  if (!filter_var($_POST["cap"], FILTER_VALIDATE_INT) || strlen($_POST["cap"])!=5) {
+    $capError = "Il CAP deve essere composto da cinque numeri";
+  }
+  if (!preg_match("/^[0-9]*$/",$_POST["numero"]) || strlen($_POST["numero"])!=16) {
+    $cartaError = "Il numero della carta deve essere composto da sedici numeri";
+  }
+  if (!filter_var($_POST["cvv"], FILTER_VALIDATE_INT) || strlen($_POST["cvv"])!=3) {
+    $cvvError = "Il CVV deve essere composto da tre numeri";
+  }
+  if (!filter_var($_POST["scadenzaa"], FILTER_VALIDATE_INT) || strlen($_POST["scadenzaa"])!=4 || $_POST["scadenzaa"]<date("Y")) {
+    $annoError = "Formato anno errato";
+  }
+  if($titolareError=="" && $capError =="" && $capError =="" && $cartaError =="" && $cvvError =="" && $annoError==""){
+    $_SESSION["procediAlPagamento"]=1;
+  }
+}
+?>
 <h1><span class="fas fa-shopping-cart"></span> <?php echo $templateParams["titolo_pagina"]; ?></h1>
     <!-- Modalita vuoto-->
     <?php if(count($currentCart) == 0 || number_format($currentCart[0]["TotalePrezzo"],2) == 0) { ?>
@@ -25,7 +50,7 @@
                         <a><img src="<?php echo UPLOAD_DIR_VARIETY.$prodotto["ImmagineProdotto"]; ?>" alt="Immagine <?php echo $prodotto["NomeProdotto"];?>"/></a>
                       </td>
                       <td headers="articolo">
-                        <a href="#"><?php echo $prodotto["NomeProdotto"];?></a>
+                        <a href="prodotto.php?id="<?php echo $prodotto["IdProdotto"];?>><?php echo $prodotto["NomeProdotto"];?></a>
                       </td>
                       <td headers="prezzo">
                         <p><?php echo number_format($prodotto["PrezzoProdotto"],2);?> €</p>
@@ -77,7 +102,7 @@
             <div class="col-75">
               <div class="container">
               <?php if(!isset($_SESSION["procediAlPagamento"])) {?>
-                <form action="processa-form.php" method="POST" enctype="multipart/form-data">
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                   <div class="row">
                     <div class="col-50">
                       <h3>Indirizzo di fatturazione: </h3>
@@ -90,6 +115,7 @@
                         <div class="col-50">
                           <label for="cap">Cap</label>
                           <input type="text" id="cap" name="cap" placeholder="47125" required>
+                          <span class="error"> <?php echo $capError;?></span>
                         </div>
                       </div>
                     </div>
@@ -104,29 +130,32 @@
                       </div>
                       <label for="cname">Titolare carta</label>
                       <input type="text" id="titolare" name="titolare" placeholder="Mario Rossi" required>
+                      <span class="error"> <?php echo $titolareError;?></span>
                       <label for="ccnum">Numero carta</label>
                       <input type="text" id="numero" name="numero" placeholder="1111-2222-3333-4444" required>
+                      <span class="error"> <?php echo $cartaError;?></span>
                       <label for="expmonth">Mese di scadenza</label>
                       <input type="text" id="scadenzam" name="scadenzam" placeholder="Settembre" required>
                       <div class="row">
                         <div class="col-50">
                           <label for="expyear">Anno di scadenza</label>
                           <input type="text" id="scadenzaa" name="scadenzaa" placeholder="2022" required>
+                          <span class="error"> <?php echo $annoError;?></span>
                         </div>
                         <div class="col-50">
                           <label for="cvv">CVV</label>
                           <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                          <span class="error"> <?php echo $cvvError;?></span>
                         </div>
                       </div>
                     </div>
                 </div>
-                <input type="hidden" name="action" value="14"/>
                     <button type="submit" class="btn btn-success">Verifica dati</button>
               
               </form>
             <?php } else {?>
             <section>
-              <p>Dati verificati</p>
+              <h3>Dati verificati</h3>
             </section>
             <form action="processa-form.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="idOrdine" value="<?php echo $currentCart[0]["IdOrdine"];?>" />

@@ -431,11 +431,9 @@ hr {
     margin-bottom: 4%;
 }
 
-.info form{
+.info form input, .info form label{
     display: inline-block;
-    width: 40%;
 }
-
 .info button{
     border: none;
     width: 70%;
@@ -577,6 +575,11 @@ hr {
     border: none;
     cursor: pointer;
     width: 100%;
+}
+/*error*/
+.error{
+    color: red;
+    margin: 1%;
 }
 
 @media screen and (min-width: 768px){
