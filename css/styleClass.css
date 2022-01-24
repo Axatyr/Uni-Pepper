@@ -96,6 +96,7 @@ nav a.icon {
 .sec-varieta div{
     display: initial;
     vertical-align: top;
+    text-align: left;
 }
 
 .sec-varieta div:first-child {
@@ -112,7 +113,7 @@ nav a.icon {
 
 .top-varieta img{
     height: 80px;
-
+    width: 100px;
 }
 
 .top-varieta a {
@@ -187,6 +188,7 @@ main .login p span, .rifornisci span{
 .ricetta img {
     vertical-align: middle;
     max-width: 100%;
+    overflow:hidden;
     padding: 0;
 }
 .ricetta p{
@@ -344,14 +346,16 @@ hr {
 /*Prodotti*/
 .product {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 49%;
+    width: 49%;
     margin: 2% auto;
     text-align: center;
     display: inline-block;
+    vertical-align: top;
 }
 
 .product img{
-    max-width: 200px;
+    width: 200px;
+    height: 170px;
     margin-top: 2%;
 }
 
@@ -637,6 +641,11 @@ hr {
     .product{
         margin: 2%;
     }
+
+    .product img{
+        width:98%;
+    }
+
     .stato div{
         display: inline-block;
         margin: 4%;
@@ -672,6 +681,11 @@ hr {
         vertical-align: top;
         max-width: 77%;
     }
+
+    .product {
+        width: 15%;
+    }
+
     .sec-varieta div{
         display: inline-block;
         vertical-align: top;
@@ -684,6 +698,8 @@ hr {
 
     .varieta div:first-child img {
         margin-top: 20%;
+        height: 150px;
+        width: 100%;
     }
 
     .varieta div:nth-child(2) {
