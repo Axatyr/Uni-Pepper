@@ -2,6 +2,18 @@
 <?php if(isset($templateParams["errorelogin"])): ?>
     <p><?php echo $templateParams["errorelogin"]; ?></p>
 <?php endif; ?>
+<?php if(isset($_SESSION["procediRegistrazione"])){
+    if($_SESSION["procediRegistrazione"]==1){?>
+        <section>
+            <h3>E-mail gi&agrave; registrata</h3>
+        </section>
+    <?php }else if($_SESSION["procediRegistrazione"]==2){ ?>
+        <section>
+            <h3>Errore di registrazione</h3>
+            <p>La password deve essere di almeno 7 caratteri e deve contenere almeno una lettera ed un numero</p>
+        </section>
+<?php } }
+    unset($_SESSION["procediRegistrazione"]); ?>
 <form action="#" method="post" class="login"> 
     <label for="mail"><b>E-mail: </b></label>
     <input type="text" placeholder="Inserisci E-mail" id="mail" name="mail" required>    
@@ -38,7 +50,7 @@
             <input type="hidden" name="action" value="1"/>
             <button type="submit">Conferma</button>
         </div>
-    </form>
+    </form>    
 </div>
 <script>
     // Get the modal

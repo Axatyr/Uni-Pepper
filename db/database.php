@@ -373,5 +373,15 @@ class DatabaseHelper{
         $stmt->bind_param('ii', $letto, $utente);
         $stmt->execute();
     }
+
+    public function checkMail($email){
+        $query = "SELECT IdUtente FROM utenti WHERE Mail = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

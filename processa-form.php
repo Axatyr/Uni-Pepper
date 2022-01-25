@@ -17,8 +17,20 @@ if($_POST["action"]==1){
     else{
         $tipo = "c";
     }
-    $id = $dbh->inserisciUtente($nome, $cognome, $mail, $password, $tipo);
-    header("location: login.php");
+    if (count($dbh->checkMail($email))!=0){
+        $_SESSION["procediRegistrazione"]=1;
+        header("location: login.php");
+    }
+    else if (!preg_match("/^(?:[0-9]+[a-z]|[a-z]+[0-9])[a-z0-9]*$/",$password) || strlen($password)<7) {
+        $_SESSION["procediRegistrazione"]=2;
+        header("location: login.php");
+    }
+    else{
+        $id = $dbh->inserisciUtente($nome, $cognome, $mail, $password, $tipo);
+        $user = $dbh->checkLogin($email, $password);
+        registerLoggedUser($user[0]);
+        header("location: login.php");
+    }
 }
 /*Aggiunta prodotto*/
 if($_POST["action"]==2){
