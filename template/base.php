@@ -25,7 +25,7 @@
         <a href="assistente.php" title="assistente" <?php isActive("assistente.php");?>>Assistente</a>
         <a href="#" class="icon" onclick="resize()" title="menu" ><span class="fas fa-bars" title="Menu"></span></a> 
         <a id="main" onclick="openNav()" class="right" title="notifiche" ><span class="fas fa-bell" title="Notifiche"></span></a>
-        <a href="preferiti.php" title="preferiti" class="right<?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" title="Preferiti"></span></a>
+        <a href="preferiti.php" title="preferiti" class="right <?php isEchoActive("preferiti.php");?>"><span class="fas fa-heart" title="Preferiti"></span></a>
         <a href="carrello.php" title="carrello" class="right <?php isEchoActive("carrello.php");?>"><span class="fas fa-shopping-cart" title="Carrello"></span></a>
         <a href="login.php" title="login" class="right <?php isEchoActive("login.php");?>"><span class="fas fa-user-alt" title="Utente"></span></a>
     </nav>    
